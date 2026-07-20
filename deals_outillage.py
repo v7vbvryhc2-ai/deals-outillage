@@ -1,6 +1,5 @@
 import json, re, os, urllib.parse, urllib.request
 from datetime import datetime
-from playwright.sync_api import sync_playwright, TimeoutError as PwTimeout
 
 TOKEN   = os.environ["TELEGRAM_TOKEN"]
 CHAT    = os.environ["CHAT_ID"]
@@ -14,7 +13,10 @@ KW_OUTILLAGE = [
     "cloueur","agrafeuse","rabot","affuteuse","polisseuse","decapeur","chalumeau",
     "niveau laser","outillage","parkside","bosch","makita","dewalt","milwaukee",
     "ryobi","einhell","worx","stanley","hikoki","festool","metabo","facom","fabre",
-    "aspirateur atelier","visseuse a choc","perceuse visseuse"
+    "aspirateur atelier","visseuse a choc","perceuse visseuse","knipex","gedore",
+    "bahco","wera","wiha","irwin","pince","cle a molette","tournevis","maillet",
+    "ciseau bois","burin","lime","serre-joint","etau","etabli","coffret outils",
+    "caisse outils","boite outils","multimetre","detecteur","disqueuse","meule"
 ]
 
 KW_JARDINAGE = [
@@ -25,46 +27,21 @@ KW_JARDINAGE = [
     "motoculteur","motobineuse","elagueur","coupe bordure","rotofil",
     "pulverisateur","traitement jardin","engrais","terreau","pot fleur",
     "jardinage","husqvarna","stihl","greenworks","ego","ferrex","florabest",
-    "gardena","kress","outils jardin","bêche","fourche","binette","râteau",
-    "pelle","transplantoir","sécateur","cisaille","echenilloir","griffe",
+    "gardena","kress","outils jardin","beche","fourche","binette","rateau",
+    "pelle","transplantoir","secateur","cisaille","echenilloir","griffe",
     "piscine","spa","pompe piscine","robot piscine","liner","bache piscine",
-    "parasol","salon jardin","barbecue","plancha","table jardin","chaise jardin"
+    "parasol","salon jardin","barbecue","plancha","table jardin","chaise jardin",
+    "tonte","gazon","pelouse","haie","arbre","arbuste","rosier","plante"
 ]
 
 KW_ALL = list(set(KW_OUTILLAGE + KW_JARDINAGE))
 
-STORES = [
-    # Outillage
-    ("Leroy Merlin", "https://www.leroymerlin.be/fr/promotions/outillage-electrique", "Outillage"),
-    ("Leroy Merlin FR", "https://www.leroymerlin.fr/promotions/outillage-electrique/", "Outillage"),
-    ("Brico", "https://www.brico.be/fr/outillage/", "Outillage"),
-    ("Gamma", "https://www.gamma.be/nl/gereedschap/aanbiedingen/", "Outillage"),
-    ("Hubo", "https://www.hubo.be/nl/gereedschap/", "Outillage"),
-    ("Castorama", "https://www.castorama.fr/outillage/r-outillage-electrique.html?prefn1=isPromo&prefv1=true", "Outillage"),
-    ("Toolstation", "https://www.toolstation.be/fr/promotions/", "Outillage"),
-    ("Amazon FR outils", "https://www.amazon.fr/s?rh=n%3A13920671%2Cp_n_pct-off-with-tax%3A30-&sort=discount-rank", "Outillage"),
-    ("Cdiscount outils", "https://www.cdiscount.com/bricolage/outillage/l-bricolage_outillage.html?SortBy=DiscountDesc", "Outillage"),
-    ("Bol.com outils", "https://www.bol.com/be/nl/l/gereedschap/36491/?sort=promodiscount", "Outillage"),
-    ("Lidl outils", "https://www.lidl.be/fr/c/outillage/c3210", "Outillage"),
-    ("Action outils", "https://www.action.com/fr-be/c/outillage/", "Outillage"),
-    ("Bricomarché", "https://www.bricomarche.com/outillage/outillage-electrique", "Outillage"),
-    ("Mr Bricolage", "https://www.mr-bricolage.be/fr/outillage-electrique/promotions", "Outillage"),
-    ("Weldom outils", "https://www.weldom.fr/promotions/outillage", "Outillage"),
-    # Jardinage
-    ("Leroy Merlin Jardin", "https://www.leroymerlin.be/fr/promotions/jardin", "Jardinage"),
-    ("Leroy Merlin FR Jardin", "https://www.leroymerlin.fr/promotions/jardin/", "Jardinage"),
-    ("Brico Jardin", "https://www.brico.be/fr/jardin/", "Jardinage"),
-    ("Gamma Jardin", "https://www.gamma.be/nl/tuin/aanbiedingen/", "Jardinage"),
-    ("Hubo Jardin", "https://www.hubo.be/nl/tuin/", "Jardinage"),
-    ("Castorama Jardin", "https://www.castorama.fr/jardin/r-jardin.html?prefn1=isPromo&prefv1=true", "Jardinage"),
-    ("Amazon FR Jardin", "https://www.amazon.fr/s?rh=n%3A592765011%2Cp_n_pct-off-with-tax%3A30-&sort=discount-rank", "Jardinage"),
-    ("Cdiscount Jardin", "https://www.cdiscount.com/jardin/l-jardin.html?SortBy=DiscountDesc", "Jardinage"),
-    ("Bol.com Jardin", "https://www.bol.com/be/nl/l/tuin/24798/?sort=promodiscount", "Jardinage"),
-    ("Lidl Jardin", "https://www.lidl.be/fr/c/jardin/c1570", "Jardinage"),
-    ("Action Jardin", "https://www.action.com/fr-be/c/jardin/", "Jardinage"),
-    ("Bricomarché Jardin", "https://www.bricomarche.com/jardin", "Jardinage"),
-    ("Mr Bricolage Jardin", "https://www.mr-bricolage.be/fr/jardin/promotions", "Jardinage"),
+FEEDS = [
+    ("https://www.dealabs.com/rss/groupe/outillage", "Outillage"),
+    ("https://www.dealabs.com/rss/groupe/jardin-bricolage", "Jardinage"),
 ]
+
+H = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"}
 
 def load_json(f, default):
     try:
@@ -74,6 +51,11 @@ def load_json(f, default):
 def save_json(f, data):
     with open(f, "w") as fp: json.dump(data, fp, ensure_ascii=False, indent=2)
 
+def parse_price(s):
+    if not s: return None
+    try: return float(re.sub(r'[^\d,.]', '', str(s)).replace(',', '.'))
+    except: return None
+
 def is_relevant(text, category):
     t = text.lower()
     kw = KW_JARDINAGE if category == "Jardinage" else KW_OUTILLAGE
@@ -81,123 +63,68 @@ def is_relevant(text, category):
 
 def calc_discount(old, new):
     try:
-        o, n = float(str(old).replace(',','.')), float(str(new).replace(',','.'))
+        o, n = float(str(old).replace(',', '.')), float(str(new).replace(',', '.'))
         if o > n > 0: return int((o - n) / o * 100)
     except: pass
     return 0
 
-def parse_price(s):
-    if not s: return None
-    try: return float(re.sub(r'[^\d,.]','', str(s)).replace(',','.'))
-    except: return None
-
-def extract_from_page(page, store_name, category):
+def parse_feed(html, category):
     deals = []
-    url = page.url
+    items = re.findall(r'<item>(.*?)</item>', html, re.DOTALL)
+    for item in items:
+        t = re.search(r'<title><!\[CDATA\[([^\]]+)\]', item)
+        if not t: continue
+        title = t.group(1).strip()
 
-    # JSON-LD
-    for script in page.query_selector_all('script[type="application/ld+json"]'):
-        try:
-            data = json.loads(script.inner_text())
-            items = data if isinstance(data, list) else [data]
-            for item in items:
-                if item.get('@type') == 'ItemList':
-                    items += [e.get('item', e) for e in item.get('itemListElement', [])]
-                if item.get('@type') == 'Product':
-                    name = item.get('name', '')
-                    if not name or not is_relevant(name, category): continue
-                    offers = item.get('offers', {})
-                    if isinstance(offers, list): offers = offers[0] if offers else {}
-                    price = parse_price(offers.get('price'))
-                    high  = parse_price(offers.get('highPrice'))
-                    pct   = calc_discount(high, price) if high and price else 0
-                    if pct >= 30:
-                        # Extract image from JSON-LD
-                        img = ""
-                        raw_img = item.get("image", "")
-                        if isinstance(raw_img, list): raw_img = raw_img[0] if raw_img else ""
-                        if isinstance(raw_img, dict): raw_img = raw_img.get("url", "")
-                        if isinstance(raw_img, str) and raw_img.startswith("http"):
-                            img = raw_img
-                        deals.append({
-                            "id": re.sub(r'[^\w]','', name[:20]+str(price)),
-                            "title": name[:100], "price": f"{price}€",
-                            "pct": pct, "merch": store_name, "category": category,
-                            "link": offers.get('url', url), "image": img
-                        })
-        except: pass
+        if not is_relevant(title, category): continue
 
-    # % badges dans HTML
-    try:
-        html = page.content()
-        for pct_str in re.findall(r'[-–]\s*(\d{2,3})\s*%', html):
-            pct = int(pct_str)
-            if pct < 30: continue
-            idx = html.find(f'-{pct_str}%')
-            if idx < 0: continue
-            ctx = html[max(0,idx-600):idx+600]
-            names = re.findall(r'(?:alt|title|aria-label)="([^"]{10,80})"', ctx)
-            for name in names:
-                if is_relevant(name, category) and len(deals) < 80:
-                    pm = re.search(r'([\d]+[,\.][\d]{2})\s*€', ctx)
-                    lm = re.search(r'href="(/[^"]{5,120})"', ctx)
-                    im = re.search(r'<img[^>]+src="(https://[^"]{20,200})"', ctx)
-                    base = page.url.split('/')[0]+'//'+page.url.split('/')[2]
-                    deals.append({
-                        "id": re.sub(r'[^\w]','', name[:20]+pct_str+category[:3]),
-                        "title": name[:100],
-                        "price": f"{pm.group(1)}€" if pm else "?",
-                        "pct": pct, "merch": store_name, "category": category,
-                        "link": base+lm.group(1) if lm else url,
-                        "image": im.group(1) if im else ""
-                    })
-                    break
-    except: pass
+        p = re.search(r'price="([^"]+)"', item)
+        m = re.search(r'merchant name="([^"]+)"', item)
+        l = re.search(r'<link>([^<]+)</link>', item)
+        img = re.search(r'url="(https://[^"]+)"', item)
+        d = re.search(r'<description><!\[CDATA\[(.*?)\]\]>', item, re.DOTALL)
 
-    seen_ids, unique = set(), []
-    for d in deals:
-        if d["id"] not in seen_ids:
-            seen_ids.add(d["id"])
-            unique.append(d)
-    return unique
+        price_str = p.group(1) if p else ""
+        merch = m.group(1) if m else ""
+        link = l.group(1).strip() if l else ""
+        image = img.group(1) if img else ""
+        desc = re.sub(r'<[^>]+>', ' ', d.group(1)) if d else ""
+        full_text = title + " " + desc
 
-def scrape_all():
-    all_deals = []
-    with sync_playwright() as pw:
-        browser = pw.chromium.launch(headless=True)
-        ctx = browser.new_context(
-            user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
-            locale="fr-BE", viewport={"width": 1280, "height": 900}
-        )
-        for store_name, url, category in STORES:
-            page = ctx.new_page()
-            try:
-                print(f"[{category}] Scan {store_name}...")
-                page.goto(url, wait_until="domcontentloaded", timeout=25000)
-                page.wait_for_timeout(4000)
-                page.evaluate("window.scrollTo(0, document.body.scrollHeight / 2)")
-                page.wait_for_timeout(2000)
-                deals = extract_from_page(page, store_name, category)
-                # Fallback: use og:image if no product images found
-                if deals and not any(d.get("image") for d in deals):
-                    try:
-                        og = page.query_selector('meta[property="og:image"]')
-                        og_img = og.get_attribute("content") if og else ""
-                        if og_img:
-                            for d in deals:
-                                if not d.get("image"): d["image"] = og_img
-                    except: pass
-                print(f"  → {len(deals)} deals ≥30%")
-                all_deals.extend(deals)
-            except PwTimeout:
-                print(f"  → Timeout {store_name}")
-            except Exception as e:
-                print(f"  → Erreur {store_name}: {e}")
-            finally:
-                page.close()
-        ctx.close()
-        browser.close()
-    return all_deals
+        current_price = parse_price(price_str)
+        pct = 0
+
+        # Look for explicit % in title/desc
+        pcts = re.findall(r'[-–]\s*(\d{2,3})\s*%', full_text)
+        pcts += re.findall(r'(\d{2,3})\s*%\s*(?:de remise|reduction|off|moins|rabais)',
+                           full_text, re.IGNORECASE)
+        if pcts:
+            pct = max(int(x) for x in pcts)
+
+        # Calculate from old/new price if no explicit %
+        if pct < 30 and current_price:
+            all_prices = [parse_price(x) for x in re.findall(r'([\d]+[,\.][\d]{2})\s*€', full_text)]
+            all_prices = sorted([x for x in all_prices if x and x > current_price * 1.1], reverse=True)
+            if all_prices:
+                pct = calc_discount(all_prices[0], current_price)
+
+        if pct < 30:
+            continue
+
+        did = re.search(r'/(\d+)$', link)
+        deal_id = did.group(1) if did else re.sub(r'[^\w]', '', title[:20] + price_str[:5])
+
+        deals.append({
+            "id": deal_id,
+            "title": title[:100],
+            "price": price_str,
+            "pct": pct,
+            "merch": merch,
+            "category": category,
+            "link": link,
+            "image": image,
+        })
+    return deals
 
 def tg(txt):
     data = urllib.parse.urlencode({
@@ -256,7 +183,7 @@ header p{{opacity:.8;margin-top:6px;font-size:.85rem}}
 </style></head><body>
 <header>
   <h1>🔧🌿 Deals Outillage & Jardinage ≥30%</h1>
-  <p>Scan toutes les heures • Leroy Merlin • Brico • Gamma • Hubo • Castorama • Amazon • Cdiscount • Toolstation • Bol.com • Lidl • Action • et plus</p>
+  <p>Scan toutes les heures via Dealabs • Leroy Merlin • Amazon • Lidl • Bosch • Makita • DeWalt • Milwaukee • Ryobi • et plus</p>
 </header>
 <div class="stats">
   <div class="stat"><div class="num" id="total">0</div><div class="label">Total deals</div></div>
@@ -280,7 +207,7 @@ header p{{opacity:.8;margin-top:6px;font-size:.85rem}}
   <select id="store" onchange="filter()"><option value="">Toutes les boutiques</option></select>
 </div>
 <div class="grid" id="grid"></div>
-<div class="footer">Dernière mise à jour : {now} • <a href="https://github.com/v7vbvryhc2-ai/deals-outillage" style="color:#60a5fa">GitHub</a></div>
+<div class="footer">Dernière mise à jour : {now} • Source : Dealabs • <a href="https://github.com/v7vbvryhc2-ai/deals-outillage" style="color:#60a5fa">GitHub</a></div>
 <script>
 const RAW={deals_json};
 const deals=RAW.slice().reverse();
@@ -339,7 +266,18 @@ history = load_json(HISTORY, [])
 now_str = datetime.utcnow().strftime("%d/%m/%Y %H:%M")
 new     = []
 
-all_deals = scrape_all()
+all_deals = []
+for feed_url, category in FEEDS:
+    try:
+        print(f"Scan RSS {category}...")
+        with urllib.request.urlopen(
+            urllib.request.Request(feed_url, headers=H), timeout=20) as r:
+            html = r.read().decode("utf-8", errors="replace")
+        deals = parse_feed(html, category)
+        print(f"  → {len(deals)} deals ≥30%")
+        all_deals.extend(deals)
+    except Exception as e:
+        print(f"  → Erreur {category}: {e}")
 
 for d in all_deals:
     if d["id"] not in seen:
