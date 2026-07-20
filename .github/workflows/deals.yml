@@ -19,10 +19,10 @@ jobs:
           CHAT_ID: ${{ secrets.CHAT_ID }}
         run: python3 deals_outillage.py
 
-      - name: Save seen deals
+      - name: Commit dashboard
         run: |
           git config user.email "action@github.com"
           git config user.name "GitHub Action"
-          git add seen_deals.json || true
-          git diff --staged --quiet || git commit -m "Update seen deals"
+          git add seen_deals.json deals_history.json README.md || true
+          git diff --staged --quiet || git commit -m "Update dashboard $(date +'%d/%m %H:%M')"
           git push || true
