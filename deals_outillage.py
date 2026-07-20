@@ -48,6 +48,8 @@ FIXAMI_URLS = [
     ("https://www.fixami.be/fr/offres/bosch-pro-deals.html", "Outillage"),
 ]
 
+ROTOPINO_PAGES = 8  # pages in /offres/prix-baisse/
+
 H = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"}
 
 def load_json(f, default):
@@ -253,6 +255,85 @@ def parse_fixami(url, category):
 
     return deals
 
+def parse_rotopino(max_pages=8):
+    """Scrape Rotopino prix-baisse pages for deals >= 20%."""
+    deals = []
+    try:
+        for page in range(1, max_pages + 1):
+            url = f"https://www.rotopino.fr/offres/prix-baisse/?page={page}" if page > 1 else "https://www.rotopino.fr/offres/prix-baisse/"
+            try:
+                html = fetch_url(url, timeout=20)
+            except Exception:
+                break
+
+            page_deals = 0
+            for m in re.finditer(r'class="percent">(-\d{1,3})%</span>', html):
+                pct = abs(int(m.group(1)))
+                pos = m.start()
+                block = html[pos:pos + 1000]
+
+                old_m = re.search(r'class="old">([\d\s,\xa0]+)\s*€', block)
+                curr_m = re.search(r'class="int-part">([\d\s]+)</span>\s*<span class="dec-part">([^<]*?)€', block)
+
+                try:
+                    old = float(re.sub(r'[^\d,.]', '', (old_m.group(1) if old_m else '0').replace('\xa0', '')).replace(',', '.'))
+                    if curr_m:
+                        int_p = re.sub(r'[^\d]', '', curr_m.group(1))
+                        dec_p = re.sub(r'[^\d]', '', curr_m.group(2))
+                        curr = float(f"{int_p}.{dec_p[:2] if dec_p else '00'}")
+                    else:
+                        curr = 0.0
+                except:
+                    old, curr = 0.0, 0.0
+
+                if old > curr > 0:
+                    pct = int((old - curr) / old * 100)
+
+                if pct < 20:
+                    continue
+
+                before = html[max(0, pos - 2500):pos]
+                prod_links = re.findall(r'href="(/[a-z0-9][^"]+,\d+)"[^>]*>\s*(?:<[^>]+>\s*)?([^<]{5,120})\s*</a>', before[-2000:])
+                if prod_links:
+                    prod_url = "https://www.rotopino.fr" + prod_links[-1][0]
+                    name = prod_links[-1][1].strip()
+                else:
+                    alts = re.findall(r'alt="([^"]{5,120})"', before[-500:])
+                    name = alts[-1] if alts else "?"
+                    url_m2 = re.search(r'href="(/[a-z0-9][^"]+,\d+)"', before[-500:])
+                    prod_url = "https://www.rotopino.fr" + url_m2.group(1) if url_m2 else url
+
+                name = re.sub(r'&#(\d+);', lambda x: chr(int(x.group(1))), name)
+                name = name.replace('&amp;', '&').replace('&quot;', '"').replace("&#39;", "'")
+
+                if not is_relevant(name, "Outillage"):
+                    continue
+
+                img_m = re.search(r'src="(https://[^"]+\.(?:jpg|jpeg|png|webp)[^"]*)"', before[-500:])
+                img = img_m.group(1) if img_m else ""
+
+                deal_id = f"rotopino_{re.sub(r'[^a-z0-9]', '', name[:20].lower())}_{int(curr * 100)}"
+                deals.append({
+                    "id": deal_id,
+                    "title": name[:100],
+                    "price": f"{curr:.2f}€" if curr else "",
+                    "pct": pct,
+                    "merch": "Rotopino",
+                    "category": "Outillage",
+                    "link": prod_url,
+                    "image": img,
+                })
+                page_deals += 1
+
+            print(f"  → Rotopino p{page}: {page_deals} deals ≥30%")
+            if not re.search(rf'page={page + 1}', html):
+                break
+
+    except Exception as e:
+        print(f"  → Rotopino erreur: {e}")
+
+    return deals
+
 def tg(txt):
     data = urllib.parse.urlencode({
         "chat_id": CHAT, "text": txt,
@@ -310,7 +391,7 @@ header p{{opacity:.8;margin-top:6px;font-size:.85rem}}
 </style></head><body>
 <header>
   <h1>🔧🌿 Deals Outillage & Jardinage ≥30%</h1>
-  <p>Scan toutes les heures • Dealabs • Fixami • Leroy Merlin • Amazon • Lidl • Screwfix • ManoMano • Racetools • Bosch • Makita • DeWalt • Milwaukee • Ryobi • et plus</p>
+  <p>Scan toutes les heures • Dealabs • Fixami • Rotopino • Leroy Merlin • Amazon • Lidl • Screwfix • ManoMano • Racetools • Bosch • Makita • DeWalt • Milwaukee • Ryobi • et plus</p>
 </header>
 <div class="stats">
   <div class="stat"><div class="num" id="total">0</div><div class="label">Total deals</div></div>
@@ -334,7 +415,7 @@ header p{{opacity:.8;margin-top:6px;font-size:.85rem}}
   <select id="store" onchange="filter()"><option value="">Toutes les boutiques</option></select>
 </div>
 <div class="grid" id="grid"></div>
-<div class="footer">Dernière mise à jour : {now} • Source : Dealabs + Fixami direct • <a href="https://github.com/v7vbvryhc2-ai/deals-outillage" style="color:#60a5fa">GitHub</a></div>
+<div class="footer">Dernière mise à jour : {now} • Source : Dealabs + Fixami + Rotopino direct • <a href="https://github.com/v7vbvryhc2-ai/deals-outillage" style="color:#60a5fa">GitHub</a></div>
 <script>
 const RAW={deals_json};
 const deals=RAW.slice().reverse();
@@ -417,6 +498,15 @@ for fixami_url, category in FIXAMI_URLS:
         all_deals.extend(deals)
     except Exception as e:
         print(f"  → Fixami erreur: {e}")
+
+# Rotopino direct scan (seuil ≥20%)
+print("Scan Rotopino...")
+try:
+    rotopino_deals = parse_rotopino(ROTOPINO_PAGES)
+    print(f"  → {len(rotopino_deals)} deals Rotopino ≥20%")
+    all_deals.extend(rotopino_deals)
+except Exception as e:
+    print(f"  → Rotopino erreur: {e}")
 
 for d in all_deals:
     if d["id"] not in seen:
