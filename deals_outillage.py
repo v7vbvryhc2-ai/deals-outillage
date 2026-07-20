@@ -1,4 +1,4 @@
-import json, re, os, urllib.parse, urllib.request
+import json, re, os, urllib.parse, urllib.request, urllib.error
 from datetime import datetime
 
 TOKEN   = os.environ["TELEGRAM_TOKEN"]
@@ -16,7 +16,9 @@ KW_OUTILLAGE = [
     "aspirateur atelier","visseuse a choc","perceuse visseuse","knipex","gedore",
     "bahco","wera","wiha","irwin","pince","cle a molette","tournevis","maillet",
     "ciseau bois","burin","lime","serre-joint","etau","etabli","coffret outils",
-    "caisse outils","boite outils","multimetre","detecteur","disqueuse","meule"
+    "caisse outils","boite outils","multimetre","detecteur","disqueuse","meule",
+    "fixami","maxoutil","rotopino","discountoffice","idmarket","clickoutils",
+    "cdiscount","screwfix","manomano","racetools"
 ]
 
 KW_JARDINAGE = [
@@ -39,6 +41,11 @@ KW_ALL = list(set(KW_OUTILLAGE + KW_JARDINAGE))
 FEEDS = [
     ("https://www.dealabs.com/rss/groupe/outillage", "Outillage"),
     ("https://www.dealabs.com/rss/groupe/jardin-bricolage", "Jardinage"),
+]
+
+FIXAMI_URLS = [
+    ("https://www.fixami.be/fr/offres/ete-plein-de-reductions.html", "Outillage"),
+    ("https://www.fixami.be/fr/offres/bosch-pro-deals.html", "Outillage"),
 ]
 
 H = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"}
@@ -68,6 +75,28 @@ def calc_discount(old, new):
     except: pass
     return 0
 
+def fetch_url(url, timeout=25):
+    """Fetch URL following redirects including 308."""
+    req = urllib.request.Request(url, headers=H)
+    for _ in range(6):
+        try:
+            with urllib.request.urlopen(req, timeout=timeout) as r:
+                return r.read().decode("utf-8", errors="replace")
+        except urllib.error.HTTPError as e:
+            if e.code in (301, 302, 303, 307, 308):
+                loc = e.headers.get("location", "")
+                if loc:
+                    if not loc.startswith("http"):
+                        from urllib.parse import urljoin
+                        loc = urljoin(url, loc)
+                    req = urllib.request.Request(loc, headers=H)
+                    url = loc
+                else:
+                    raise
+            else:
+                raise
+    return ""
+
 def parse_feed(html, category):
     deals = []
     items = re.findall(r'<item>(.*?)</item>', html, re.DOTALL)
@@ -94,14 +123,12 @@ def parse_feed(html, category):
         current_price = parse_price(price_str)
         pct = 0
 
-        # Look for explicit % in title/desc
         pcts = re.findall(r'[-–]\s*(\d{2,3})\s*%', full_text)
         pcts += re.findall(r'(\d{2,3})\s*%\s*(?:de remise|reduction|off|moins|rabais)',
                            full_text, re.IGNORECASE)
         if pcts:
             pct = max(int(x) for x in pcts)
 
-        # Calculate from old/new price if no explicit %
         if pct < 30 and current_price:
             all_prices = [parse_price(x) for x in re.findall(r'([\d]+[,\.][\d]{2})\s*€', full_text)]
             all_prices = sorted([x for x in all_prices if x and x > current_price * 1.1], reverse=True)
@@ -124,6 +151,106 @@ def parse_feed(html, category):
             "link": link,
             "image": image,
         })
+    return deals
+
+def parse_fixami(url, category):
+    """Scrape Fixami offer page for deals >= 30%."""
+    deals = []
+    try:
+        html = fetch_url(url)
+        if not html:
+            return deals
+
+        # Extract products from JSON-LD CollectionPage
+        products = []
+        for m in re.finditer(r'<script[^>]*type="application/ld\+json"[^>]*>(.*?)</script>', html, re.DOTALL):
+            try:
+                data = json.loads(m.group(1))
+                if data.get('@type') == 'CollectionPage':
+                    for item in data.get('mainEntity', {}).get('itemListElement', []):
+                        p = item.get('item', {})
+                        o = p.get('offers', {})
+                        name = p.get('name', '')
+                        price_val = o.get('price')
+                        if name and price_val is not None:
+                            try:
+                                price = float(str(price_val).replace(',', '.'))
+                            except:
+                                price = 0
+                            products.append({
+                                'name': name,
+                                'price': price,
+                                'image': o.get('image', ''),
+                                'url': p.get('url', '') or o.get('url', ''),
+                            })
+            except:
+                pass
+
+        print(f"  → Fixami: {len(products)} produits")
+
+        for prod in products:
+            name = prod['name']
+            if not name or not is_relevant(name, category):
+                continue
+
+            # Find product in HTML by first 25 chars of name
+            idx = html.find(name[:25])
+            if idx < 0:
+                continue
+
+            # Look at window AFTER the product name for discount/price info
+            window = html[idx: idx + 5000]
+
+            # Find old price: "Prix de référence [amount]"
+            old_price = 0.0
+            ref_m = re.search(r'Prix de r[eé]f[eé]rence\s*([\d\s\xa0]+[,.][\d]*)', window, re.IGNORECASE)
+            if ref_m:
+                raw = re.sub(r'[^\d,.]', '', ref_m.group(1).replace('\xa0', '').replace(' ', ''))
+                try:
+                    old_price = float(raw.replace(',', '.'))
+                except:
+                    pass
+
+            pct = 0
+
+            # Explicit % badge: "-30%"
+            pct_m = re.search(r'-(\d{1,3})\s*%', window)
+            if pct_m:
+                pct = int(pct_m.group(1))
+
+            # Calculate from old/current price
+            if pct < 30 and old_price > prod['price'] > 0:
+                pct = int((old_price - prod['price']) / old_price * 100)
+
+            # "X réduction" badge (amount reduced)
+            if pct < 30 and old_price > 0:
+                red_m = re.search(r'([\d]+[,.]?[\d]*)\s+r[eé]duction', window)
+                if red_m:
+                    try:
+                        reduction = float(red_m.group(1).replace(',', '.'))
+                        pct = int(reduction / old_price * 100)
+                    except:
+                        pass
+
+            if pct < 30:
+                continue
+
+            deal_id = "fixami_" + re.sub(r'[^a-z0-9]', '', name[:20].lower()) + "_" + str(int(prod['price'] * 100))
+
+            deals.append({
+                "id": deal_id,
+                "title": name[:100],
+                "price": f"{prod['price']:.0f}€" if prod['price'] else "",
+                "pct": pct,
+                "merch": "Fixami",
+                "category": category,
+                "link": prod['url'] or url,
+                "image": prod['image'],
+            })
+
+    except Exception as e:
+        print(f"  → Fixami erreur: {e}")
+
     return deals
 
 def tg(txt):
@@ -183,7 +310,7 @@ header p{{opacity:.8;margin-top:6px;font-size:.85rem}}
 </style></head><body>
 <header>
   <h1>🔧🌿 Deals Outillage & Jardinage ≥30%</h1>
-  <p>Scan toutes les heures via Dealabs • Leroy Merlin • Amazon • Lidl • Bosch • Makita • DeWalt • Milwaukee • Ryobi • et plus</p>
+  <p>Scan toutes les heures • Dealabs • Fixami • Leroy Merlin • Amazon • Lidl • Screwfix • ManoMano • Racetools • Bosch • Makita • DeWalt • Milwaukee • Ryobi • et plus</p>
 </header>
 <div class="stats">
   <div class="stat"><div class="num" id="total">0</div><div class="label">Total deals</div></div>
@@ -207,7 +334,7 @@ header p{{opacity:.8;margin-top:6px;font-size:.85rem}}
   <select id="store" onchange="filter()"><option value="">Toutes les boutiques</option></select>
 </div>
 <div class="grid" id="grid"></div>
-<div class="footer">Dernière mise à jour : {now} • Source : Dealabs • <a href="https://github.com/v7vbvryhc2-ai/deals-outillage" style="color:#60a5fa">GitHub</a></div>
+<div class="footer">Dernière mise à jour : {now} • Source : Dealabs + Fixami direct • <a href="https://github.com/v7vbvryhc2-ai/deals-outillage" style="color:#60a5fa">GitHub</a></div>
 <script>
 const RAW={deals_json};
 const deals=RAW.slice().reverse();
@@ -267,6 +394,8 @@ now_str = datetime.utcnow().strftime("%d/%m/%Y %H:%M")
 new     = []
 
 all_deals = []
+
+# Dealabs RSS feeds
 for feed_url, category in FEEDS:
     try:
         print(f"Scan RSS {category}...")
@@ -278,6 +407,16 @@ for feed_url, category in FEEDS:
         all_deals.extend(deals)
     except Exception as e:
         print(f"  → Erreur {category}: {e}")
+
+# Fixami direct scan
+print("Scan Fixami...")
+for fixami_url, category in FIXAMI_URLS:
+    try:
+        deals = parse_fixami(fixami_url, category)
+        print(f"  → {len(deals)} deals Fixami ≥30%")
+        all_deals.extend(deals)
+    except Exception as e:
+        print(f"  → Fixami erreur: {e}")
 
 for d in all_deals:
     if d["id"] not in seen:
