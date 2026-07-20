@@ -37,9 +37,11 @@ def parse(html):
         m = re.search(r'merchant name="([^"]+)"', item)
         l = re.search(r"<link>([^<]+)</link>", item)
         d = re.search(r"<description><!\[CDATA\[(.*?)\]\]>", item, re.DOTALL)
+        img = re.search(r'url="(https://static-pepper[^"]+)"', item)
         price = p.group(1) if p else ""
         merch = m.group(1) if m else ""
         link  = l.group(1).strip() if l else ""
+        image = img.group(1) if img else ""
         desc  = re.sub(r"<[^>]+>", " ", d.group(1)) if d else ""
         txt   = title + " " + desc
         pcts  = re.findall(r"[-]\s*(\d{2,3})\s*%", txt)
@@ -57,7 +59,7 @@ def parse(html):
             did = re.search(r"/(\d+)$", link)
             r.append({"id": did.group(1) if did else link[-20:],
                       "title": title, "price": price, "pct": pct,
-                      "merch": merch, "link": link})
+                      "merch": merch, "link": link, "image": image})
     return r
 
 def tg(txt):
@@ -71,43 +73,130 @@ def tg(txt):
         timeout=15) as r:
         return json.loads(r.read()).get("ok")
 
-def generate_readme(history):
+def generate_html(history):
     now = datetime.utcnow().strftime("%d/%m/%Y %H:%M UTC")
-    lines = [
-        "# 🔧 Deals Outillage — Tableau de bord",
-        f"",
-        f"**Dernière mise à jour :** {now}  ",
-        f"**Total deals trouvés :** {len(history)}  ",
-        f"**Source :** Dealabs.com (Outillage + Jardin/Bricolage)  ",
-        f"**Filtre :** Remise ≥ 30%",
-        f"",
-        "---",
-        "",
-        "## 🏆 Deals actifs",
-        "",
-        "| Remise | Produit | Prix | Enseigne | Lien |",
-        "|--------|---------|------|----------|------|",
-    ]
-    # Sort by discount desc, show last 50
-    for d in sorted(history, key=lambda x: x["pct"], reverse=True)[:50]:
-        title = d["title"][:55].replace("|", "-")
-        lines.append(
-            f"| **-{d['pct']}%** | {title} | {d['price']} | {d['merch']} | [Voir]({d['link']}) |"
-        )
-    lines += [
-        "",
-        "---",
-        "",
-        "## 📈 Historique complet",
-        "",
-        "| Date | Remise | Produit | Prix | Enseigne |",
-        "|------|--------|---------|------|----------|",
-    ]
-    for d in reversed(history[-100:]):
-        date = d.get("date", "")
-        title = d["title"][:50].replace("|", "-")
-        lines.append(f"| {date} | -{d['pct']}% | {title} | {d['price']} | {d['merch']} |")
-    return "\n".join(lines)
+    deals_json = json.dumps(history[-200:], ensure_ascii=False)
+    return f"""<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deals Outillage ≥30%</title>
+<style>
+  * {{ margin:0; padding:0; box-sizing:border-box; }}
+  body {{ font-family:'Segoe UI',sans-serif; background:#0f172a; color:#e2e8f0; min-height:100vh; }}
+  header {{ background:linear-gradient(135deg,#1e40af,#7c3aed); padding:24px; text-align:center; }}
+  header h1 {{ font-size:2rem; font-weight:700; }}
+  header p {{ opacity:.8; margin-top:6px; }}
+  .stats {{ display:flex; gap:12px; justify-content:center; flex-wrap:wrap; padding:20px; }}
+  .stat {{ background:#1e293b; border-radius:12px; padding:16px 24px; text-align:center; border:1px solid #334155; }}
+  .stat .num {{ font-size:2rem; font-weight:700; color:#60a5fa; }}
+  .stat .label {{ font-size:.8rem; color:#94a3b8; margin-top:4px; }}
+  .controls {{ padding:0 20px 16px; display:flex; gap:12px; flex-wrap:wrap; align-items:center; }}
+  .controls input {{ flex:1; min-width:200px; padding:10px 16px; background:#1e293b; border:1px solid #334155; border-radius:8px; color:#e2e8f0; font-size:.95rem; }}
+  .controls select {{ padding:10px 16px; background:#1e293b; border:1px solid #334155; border-radius:8px; color:#e2e8f0; }}
+  .grid {{ display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:16px; padding:0 20px 40px; }}
+  .card {{ background:#1e293b; border-radius:16px; border:1px solid #334155; overflow:hidden; transition:transform .2s,box-shadow .2s; }}
+  .card:hover {{ transform:translateY(-4px); box-shadow:0 12px 40px rgba(0,0,0,.4); }}
+  .card-img {{ width:100%; height:160px; object-fit:contain; background:#0f172a; padding:12px; }}
+  .card-img-placeholder {{ width:100%; height:160px; background:#0f172a; display:flex; align-items:center; justify-content:center; font-size:3rem; }}
+  .badge {{ display:inline-block; background:#dc2626; color:#fff; font-weight:700; font-size:1.1rem; padding:4px 12px; border-radius:20px; margin:12px 12px 0; }}
+  .card-body {{ padding:12px; }}
+  .card-title {{ font-size:.95rem; font-weight:600; color:#f1f5f9; margin-bottom:8px; line-height:1.4; }}
+  .card-meta {{ display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; }}
+  .price {{ font-size:1.2rem; font-weight:700; color:#34d399; }}
+  .merch {{ font-size:.8rem; color:#94a3b8; background:#0f172a; padding:3px 8px; border-radius:6px; }}
+  .card-date {{ font-size:.75rem; color:#64748b; margin-bottom:10px; }}
+  .btn {{ display:block; text-align:center; background:linear-gradient(135deg,#3b82f6,#8b5cf6); color:#fff; padding:10px; border-radius:8px; text-decoration:none; font-weight:600; font-size:.9rem; }}
+  .btn:hover {{ opacity:.9; }}
+  .empty {{ text-align:center; padding:60px; color:#64748b; font-size:1.1rem; }}
+  .updated {{ text-align:center; padding:8px; color:#475569; font-size:.8rem; }}
+</style>
+</head>
+<body>
+<header>
+  <h1>🔧 Deals Outillage ≥30%</h1>
+  <p>Scan automatique toutes les heures — Source : Dealabs.com</p>
+</header>
+
+<div class="stats">
+  <div class="stat"><div class="num" id="total">0</div><div class="label">Deals trouvés</div></div>
+  <div class="stat"><div class="num" id="best">0%</div><div class="label">Meilleure remise</div></div>
+  <div class="stat"><div class="num" id="shops">0</div><div class="label">Enseignes</div></div>
+</div>
+
+<div class="controls">
+  <input type="text" id="search" placeholder="🔍 Rechercher (perceuse, bosch...)" oninput="filter()">
+  <select id="sort" onchange="filter()">
+    <option value="pct">Remise décroissante</option>
+    <option value="date">Plus récents</option>
+    <option value="price">Prix croissant</option>
+  </select>
+</div>
+
+<div class="grid" id="grid"></div>
+<div class="updated">Dernière mise à jour : {now}</div>
+
+<script>
+const RAW = {deals_json};
+const deals = RAW.slice().reverse();
+
+function pctColor(p) {{
+  if (p >= 60) return '#f97316';
+  if (p >= 45) return '#ef4444';
+  return '#dc2626';
+}}
+
+function parsePrice(s) {{
+  if (!s) return 9999;
+  return parseFloat(s.replace(/[^0-9,\.]/g,'').replace(',','.')) || 9999;
+}}
+
+function filter() {{
+  const q = document.getElementById('search').value.toLowerCase();
+  const sort = document.getElementById('sort').value;
+  let filtered = deals.filter(d =>
+    d.title.toLowerCase().includes(q) ||
+    d.merch.toLowerCase().includes(q)
+  );
+  if (sort === 'pct') filtered.sort((a,b) => b.pct - a.pct);
+  else if (sort === 'date') filtered.sort((a,b) => (b.date||'').localeCompare(a.date||''));
+  else if (sort === 'price') filtered.sort((a,b) => parsePrice(a.price) - parsePrice(b.price));
+  render(filtered);
+}}
+
+function render(list) {{
+  const grid = document.getElementById('grid');
+  if (!list.length) {{ grid.innerHTML='<div class="empty">Aucun deal trouvé 🔍</div>'; return; }}
+  grid.innerHTML = list.map(d => `
+    <div class="card">
+      ${{d.image
+        ? `<img class="card-img" src="${{d.image}}" alt="${{d.title}}" loading="lazy" onerror="this.style.display='none'">`
+        : `<div class="card-img-placeholder">🔧</div>`
+      }}
+      <span class="badge" style="background:${{pctColor(d.pct)}}">-${{d.pct}}%</span>
+      <div class="card-body">
+        <div class="card-title">${{d.title}}</div>
+        <div class="card-meta">
+          <span class="price">${{d.price || 'Prix ?'}}</span>
+          <span class="merch">${{d.merch}}</span>
+        </div>
+        ${{d.date ? `<div class="card-date">📅 ${{d.date}}</div>` : ''}}
+        <a href="${{d.link}}" target="_blank" class="btn">Voir le deal →</a>
+      </div>
+    </div>
+  `).join('');
+
+  // Stats
+  document.getElementById('total').textContent = list.length;
+  document.getElementById('best').textContent = Math.max(...list.map(d=>d.pct)) + '%';
+  document.getElementById('shops').textContent = new Set(list.map(d=>d.merch)).size;
+}}
+
+filter();
+</script>
+</body>
+</html>"""
 
 # Main
 seen    = set(load_json(SEEN, []))
@@ -143,9 +232,8 @@ else:
 save_json(SEEN, list(seen)[-500:])
 save_json(HISTORY, history[-200:])
 
-# Generate README dashboard
-readme = generate_readme(history)
-with open("README.md", "w") as f:
-    f.write(readme)
+html_page = generate_html(history)
+with open("index.html", "w", encoding="utf-8") as f:
+    f.write(html_page)
 
-print(f"Dashboard mis a jour: {len(history)} deals au total")
+print(f"Page web generee: {len(history)} deals")
