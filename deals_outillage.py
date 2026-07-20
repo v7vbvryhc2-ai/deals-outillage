@@ -143,10 +143,18 @@ def parse_feed(html, category):
         did = re.search(r'/(\d+)$', link)
         deal_id = did.group(1) if did else re.sub(r'[^\w]', '', title[:20] + price_str[:5])
 
+        # Compute old price: use highest found price, or derive from pct
+        old_price_str = ""
+        if all_prices:
+            old_price_str = f"{all_prices[0]:.2f}€"
+        elif current_price and pct > 0:
+            old_price_str = f"{current_price / (1 - pct / 100):.2f}€"
+
         deals.append({
             "id": deal_id,
             "title": title[:100],
             "price": price_str,
+            "old_price": old_price_str,
             "pct": pct,
             "merch": merch,
             "category": category,
@@ -242,7 +250,8 @@ def parse_fixami(url, category):
             deals.append({
                 "id": deal_id,
                 "title": name[:100],
-                "price": f"{prod['price']:.0f}€" if prod['price'] else "",
+                "price": f"{prod['price']:.2f}€" if prod['price'] else "",
+                "old_price": f"{old_price:.2f}€" if old_price else "",
                 "pct": pct,
                 "merch": "Fixami",
                 "category": category,
@@ -317,6 +326,7 @@ def parse_rotopino(max_pages=8):
                     "id": deal_id,
                     "title": name[:100],
                     "price": f"{curr:.2f}€" if curr else "",
+                    "old_price": f"{old:.2f}€" if old else "",
                     "pct": pct,
                     "merch": "Rotopino",
                     "category": "Outillage",
@@ -382,6 +392,8 @@ header p{{opacity:.8;margin-top:6px;font-size:.85rem}}
 .card-body{{padding:10px 12px 12px}}
 .card-title{{font-size:.88rem;font-weight:600;color:#f1f5f9;margin-bottom:8px;line-height:1.4;min-height:40px}}
 .card-meta{{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}}
+.price-block{{display:flex;flex-direction:column;gap:1px}}
+.old-price{{font-size:.78rem;color:#64748b;text-decoration:line-through}}
 .price{{font-size:1.1rem;font-weight:700;color:#34d399}}
 .merch{{font-size:.72rem;color:#94a3b8;background:#0f172a;padding:2px 7px;border-radius:5px}}
 .card-date{{font-size:.7rem;color:#64748b;margin-bottom:8px}}
@@ -423,6 +435,14 @@ let activeTab='all';
 const storeSelect=document.getElementById('store');
 [...new Set(deals.map(d=>d.merch))].sort().forEach(s=>{{const o=document.createElement('option');o.value=s;o.textContent=s;storeSelect.appendChild(o)}});
 function pctColor(p){{return p>=70?'#f97316':p>=50?'#ef4444':p>=40?'#dc2626':'#b91c1c'}}
+function getOldPrice(d){{
+  if(d.old_price)return d.old_price;
+  if(d.price&&d.pct>0){{
+    const c=parseFloat(d.price.replace(/[^0-9,.]/g,'').replace(',','.'));
+    if(c&&c<9999)return(c/(1-d.pct/100)).toFixed(2).replace('.',',')+'€';
+  }}
+  return '';
+}}
 function parsePrice(s){{if(!s)return 9999;return parseFloat(s.replace(/[^0-9,\.]/g,'').replace(',','.'))||9999}}
 function setTab(t,el){{activeTab=t;document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));el.classList.add('active');filter()}}
 function filter(){{
@@ -452,7 +472,13 @@ function render(list){{
       </div>
       <div class="card-body">
         <div class="card-title">${{d.title}}</div>
-        <div class="card-meta"><span class="price">${{d.price||'?'}}</span><span class="merch">${{d.merch}}</span></div>
+        <div class="card-meta">
+          <div class="price-block">
+            ${{getOldPrice(d)?`<span class="old-price">${{getOldPrice(d)}}</span>`:''}}
+            <span class="price">${{d.price||'?'}}</span>
+          </div>
+          <span class="merch">${{d.merch}}</span>
+        </div>
         ${{d.date?`<div class="card-date">📅 ${{d.date}}</div>`:''}}
         <span class="btn">Voir le deal →</span>
       </div>
