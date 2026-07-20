@@ -9,111 +9,144 @@ header{background:linear-gradient(135deg,#1e40af,#16a34a);padding:24px;text-alig
 header h1{font-size:2rem;font-weight:700}
 header p{opacity:.8;margin-top:6px;font-size:.85rem}
 .stats{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;padding:20px}
-.stat{background:#1e293b;border-radius:12px;padding:16px 24px;text-align:center;border:1px solid #334155;min-width:120px}
-.stat .num{font-size:2rem;font-weight:700;color:#60a5fa}
+.stat{background:#1e293b;border-radius:12px;padding:16px 24px;text-align:center;border:1px solid #334155;min-width:110px}
+.stat .num{font-size:1.8rem;font-weight:700;color:#60a5fa}
 .stat .label{font-size:.75rem;color:#94a3b8;margin-top:4px}
+.tabs{display:flex;gap:8px;padding:0 20px 14px}
+.tab{padding:8px 20px;border-radius:20px;border:2px solid #334155;cursor:pointer;font-size:.9rem;font-weight:600;transition:all .2s;background:transparent;color:#94a3b8}
+.tab.active{background:#3b82f6;border-color:#3b82f6;color:#fff}
+.tab:hover:not(.active){border-color:#60a5fa;color:#60a5fa}
 .controls{padding:0 20px 16px;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
 .controls input,.controls select{padding:9px 14px;background:#1e293b;border:1px solid #334155;border-radius:8px;color:#e2e8f0;font-size:.9rem}
-.controls input{flex:1;min-width:180px}
-.tabs{display:flex;gap:8px;padding:0 20px 16px}
-.tab{padding:8px 20px;border-radius:20px;border:1px solid #334155;cursor:pointer;font-size:.9rem;transition:all .2s}
-.tab.active{background:#3b82f6;border-color:#3b82f6;font-weight:600}
-.tab:not(.active){color:#94a3b8}
+.controls input{flex:1;min-width:200px}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px;padding:0 20px 40px}
 .card{background:#1e293b;border-radius:14px;border:1px solid #334155;overflow:hidden;transition:transform .2s,box-shadow .2s;text-decoration:none;color:inherit;display:block}
 .card:hover{transform:translateY(-3px);box-shadow:0 10px 35px rgba(0,0,0,.4)}
-.card-img{width:100%;height:150px;object-fit:contain;background:#0f172a;padding:10px}
-.placeholder{width:100%;height:150px;background:#0f172a;display:flex;align-items:center;justify-content:center;font-size:2.5rem}
+.placeholder{width:100%;height:150px;background:#0f172a;display:flex;align-items:center;justify-content:center;font-size:3rem}
 .badge-row{display:flex;align-items:center;gap:8px;padding:10px 12px 0}
 .badge{color:#fff;font-weight:700;font-size:1rem;padding:3px 10px;border-radius:16px}
-.cat-badge{font-size:.7rem;padding:2px 8px;border-radius:10px;font-weight:600}
-.cat-outillage{background:#1e40af;color:#93c5fd}
-.cat-jardinage{background:#14532d;color:#86efac}
+.cat-badge{font-size:.72rem;padding:3px 9px;border-radius:10px;font-weight:700}
+.cat-Outillage{background:#1e3a8a;color:#93c5fd}
+.cat-Jardinage{background:#14532d;color:#86efac}
 .card-body{padding:10px 12px 12px}
-.card-title{font-size:.88rem;font-weight:600;color:#f1f5f9;margin-bottom:8px;line-height:1.4;min-height:40px}
-.card-meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.card-title{font-size:.88rem;font-weight:600;color:#f1f5f9;margin-bottom:8px;line-height:1.4;min-height:42px}
+.card-meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:7px}
 .price{font-size:1.1rem;font-weight:700;color:#34d399}
-.merch{font-size:.72rem;color:#94a3b8;background:#0f172a;padding:2px 7px;border-radius:5px}
+.merch{font-size:.72rem;color:#94a3b8;background:#0f172a;padding:2px 7px;border-radius:5px;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .card-date{font-size:.7rem;color:#64748b;margin-bottom:8px}
 .btn{display:block;text-align:center;background:linear-gradient(135deg,#3b82f6,#8b5cf6);color:#fff;padding:9px;border-radius:7px;font-weight:600;font-size:.82rem}
-.empty{text-align:center;padding:60px;color:#64748b}
-.footer{text-align:center;padding:8px;color:#475569;font-size:.78rem;margin-bottom:10px}
+.btn:hover{opacity:.9}
+.empty{text-align:center;padding:80px 20px;color:#64748b;font-size:1.1rem}
+.footer{text-align:center;padding:12px;color:#475569;font-size:.78rem}
+.footer a{color:#60a5fa;text-decoration:none}
 </style></head><body>
 <header>
   <h1>🔧🌿 Deals Outillage & Jardinage ≥30%</h1>
-  <p>Scan toutes les heures • Leroy Merlin • Brico • Gamma • Hubo • Castorama • Amazon • Cdiscount • Toolstation • Bol.com • Lidl • Action • et plus</p>
+  <p>Scan automatique toutes les heures • Leroy Merlin • Brico • Gamma • Hubo • Castorama • Amazon • Cdiscount • Bol.com • Lidl • Action • Toolstation...</p>
 </header>
+
 <div class="stats">
-  <div class="stat"><div class="num" id="total">0</div><div class="label">Total deals</div></div>
-  <div class="stat"><div class="num" id="cnt-out">0</div><div class="label">🔧 Outillage</div></div>
-  <div class="stat"><div class="num" id="cnt-jar">0</div><div class="label">🌿 Jardinage</div></div>
-  <div class="stat"><div class="num" id="best">0%</div><div class="label">Meilleure remise</div></div>
-  <div class="stat"><div class="num" id="shops">0</div><div class="label">Boutiques</div></div>
+  <div class="stat"><div class="num" id="s-total">-</div><div class="label">Deals affichés</div></div>
+  <div class="stat"><div class="num" id="s-out">-</div><div class="label">🔧 Outillage</div></div>
+  <div class="stat"><div class="num" id="s-jar">-</div><div class="label">🌿 Jardinage</div></div>
+  <div class="stat"><div class="num" id="s-best">-%</div><div class="label">Top remise</div></div>
+  <div class="stat"><div class="num" id="s-shops">-</div><div class="label">Boutiques</div></div>
 </div>
+
 <div class="tabs">
-  <div class="tab active" onclick="setTab('all',this)">Tout</div>
-  <div class="tab" onclick="setTab('Outillage',this)">🔧 Outillage</div>
-  <div class="tab" onclick="setTab('Jardinage',this)">🌿 Jardinage</div>
+  <div class="tab active" data-cat="all">Tout</div>
+  <div class="tab" data-cat="Outillage">🔧 Outillage</div>
+  <div class="tab" data-cat="Jardinage">🌿 Jardinage</div>
 </div>
+
 <div class="controls">
-  <input type="text" id="search" placeholder="🔍 Rechercher (perceuse, tondeuse, bosch...)" oninput="filter()">
-  <select id="sort" onchange="filter()">
+  <input type="text" id="search" placeholder="🔍 Rechercher (perceuse, tondeuse, bosch...)">
+  <select id="sort">
     <option value="pct">Remise décroissante</option>
     <option value="date">Plus récents</option>
     <option value="price">Prix croissant</option>
   </select>
-  <select id="store" onchange="filter()"><option value="">Toutes les boutiques</option></select>
+  <select id="store"><option value="">Toutes les boutiques</option></select>
 </div>
+
 <div class="grid" id="grid"></div>
-<div class="footer">Dernière mise à jour : 20/07/2026 16:11 UTC • <a href="https://github.com/v7vbvryhc2-ai/deals-outillage" style="color:#60a5fa">GitHub</a></div>
+<div class="footer">Mis à jour : 20/07/2026 16:12 UTC &nbsp;|&nbsp; <a href="https://github.com/v7vbvryhc2-ai/deals-outillage">GitHub</a></div>
+
 <script>
-const RAW=[{"id": "750-a1-750-w-3376590", "title": "Ponceuse à bande Parkside BS 750 A1 - 750 W", "price": "23,99€", "pct": 40, "merch": "Lidl", "link": "https://www.dealabs.com/bons-plans/ponceuse-a-bande-parkside-bs-750-a1-750-w-3376590", "date": "20/07/2026 14:40"}, {"id": "veau-a-bulle-3376397", "title": "[Lidl+", "price": "12,99€", "pct": 48, "merch": "Lidl", "link": "https://www.dealabs.com/bons-plans/set-doutils-parkside-23-pieces-sac-de-rangement-marteau-300-g-tournevis-et-embouts-pinces-niveau-a-bulle-3376397", "date": "20/07/2026 14:40"}];
-const deals=RAW.slice().reverse();
-let activeTab='all';
-const storeSelect=document.getElementById('store');
-[...new Set(deals.map(d=>d.merch))].sort().forEach(s=>{const o=document.createElement('option');o.value=s;o.textContent=s;storeSelect.appendChild(o)});
-function pctColor(p){return p>=70?'#f97316':p>=50?'#ef4444':p>=40?'#dc2626':'#b91c1c'}
-function parsePrice(s){if(!s)return 9999;return parseFloat(s.replace(/[^0-9,\.]/g,'').replace(',','.'))||9999}
-function setTab(t,el){activeTab=t;document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));el.classList.add('active');filter()}
-function filter(){
-  const q=document.getElementById('search').value.toLowerCase();
-  const sort=document.getElementById('sort').value;
-  const store=document.getElementById('store').value;
-  let f=deals.filter(d=>
-    (activeTab==='all'||d.category===activeTab)&&
-    (d.title.toLowerCase().includes(q)||d.merch.toLowerCase().includes(q))&&
-    (!store||d.merch===store)
+const ALL = [{"id": "750-a1-750-w-3376590", "title": "Ponceuse à bande Parkside BS 750 A1 - 750 W", "price": "23,99€", "pct": 40, "merch": "Lidl", "link": "https://www.dealabs.com/bons-plans/ponceuse-a-bande-parkside-bs-750-a1-750-w-3376590", "date": "20/07/2026 14:40"}, {"id": "veau-a-bulle-3376397", "title": "[Lidl+", "price": "12,99€", "pct": 48, "merch": "Lidl", "link": "https://www.dealabs.com/bons-plans/set-doutils-parkside-23-pieces-sac-de-rangement-marteau-300-g-tournevis-et-embouts-pinces-niveau-a-bulle-3376397", "date": "20/07/2026 14:40"}].slice().reverse();
+let activeCat = 'all';
+
+// Populate store filter
+const stores = [...new Set(ALL.map(d=>d.merch))].sort();
+const sel = document.getElementById('store');
+stores.forEach(s=>{ const o=document.createElement('option'); o.value=s; o.textContent=s; sel.appendChild(o); });
+
+// Tabs
+document.querySelectorAll('.tab').forEach(t => {
+  t.addEventListener('click', ()=>{
+    document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+    t.classList.add('active');
+    activeCat = t.dataset.cat;
+    filter();
+  });
+});
+
+// Controls
+['search','sort','store'].forEach(id => document.getElementById(id).addEventListener('input', filter));
+
+function pctColor(p) { return p>=70?'#ea580c':p>=50?'#ef4444':p>=40?'#dc2626':'#b91c1c'; }
+function parsePrice(s) { return parseFloat((s||'9999').replace(/[^0-9,.]/g,'').replace(',','.'))||9999; }
+
+function filter() {
+  const q = document.getElementById('search').value.toLowerCase();
+  const sort = document.getElementById('sort').value;
+  const store = document.getElementById('store').value;
+  let f = ALL.filter(d =>
+    (activeCat==='all' || (d.category||'Outillage')===activeCat) &&
+    (d.title.toLowerCase().includes(q) || d.merch.toLowerCase().includes(q)) &&
+    (!store || d.merch===store)
   );
-  if(sort==='pct')f.sort((a,b)=>b.pct-a.pct);
-  else if(sort==='date')f.sort((a,b)=>(b.date||'').localeCompare(a.date||''));
+  if(sort==='pct') f.sort((a,b)=>b.pct-a.pct);
+  else if(sort==='date') f.sort((a,b)=>(b.date||'').localeCompare(a.date||''));
   else f.sort((a,b)=>parsePrice(a.price)-parsePrice(b.price));
   render(f);
 }
-function render(list){
-  const grid=document.getElementById('grid');
-  if(!list.length){grid.innerHTML='<div class="empty">Aucun deal trouvé 🔍</div>';return}
-  const icon=d=>d.category==='Jardinage'?'🌿':'🔧';
-  grid.innerHTML=list.map(d=>`
-    <a href="${d.link}" target="_blank" class="card">
-      ${d.image?`<img class="card-img" src="${d.image}" alt="${d.title}" loading="lazy" onerror="this.style.display='none'">`:`<div class="placeholder">${icon(d)}</div>`}
+
+function render(list) {
+  const grid = document.getElementById('grid');
+  if(!list.length) { grid.innerHTML='<div class="empty">Aucun deal trouvé 🔍<br><small>Revenez plus tard ou changez les filtres</small></div>'; updateStats(list); return; }
+  grid.innerHTML = list.map(d => {
+    const cat = d.category||'Outillage';
+    const icon = cat==='Jardinage'?'🌿':'🔧';
+    return `<a href="${d.link||'#'}" target="_blank" class="card">
+      ${d.image ? `<img src="${d.image}" class="placeholder" style="object-fit:contain;padding:10px" onerror="this.textContent='${icon}';this.style.cssText='width:100%;height:150px;background:#0f172a;display:flex;align-items:center;justify-content:center;font-size:3rem'" loading="lazy">` : `<div class="placeholder">${icon}</div>`}
       <div class="badge-row">
         <span class="badge" style="background:${pctColor(d.pct)}">-${d.pct}%</span>
-        <span class="cat-badge ${d.category==='Jardinage'?'cat-jardinage':'cat-outillage'}">${icon(d)} ${d.category||'Outillage'}</span>
+        <span class="cat-badge cat-${cat}">${icon} ${cat}</span>
       </div>
       <div class="card-body">
         <div class="card-title">${d.title}</div>
-        <div class="card-meta"><span class="price">${d.price||'?'}</span><span class="merch">${d.merch}</span></div>
-        ${d.date?`<div class="card-date">📅 ${d.date}</div>`:''}
+        <div class="card-meta">
+          <span class="price">${d.price||'?'}</span>
+          <span class="merch">${d.merch}</span>
+        </div>
+        ${d.date ? `<div class="card-date">📅 ${d.date}</div>` : ''}
         <span class="btn">Voir le deal →</span>
       </div>
-    </a>`).join('');
-  const all=deals;
-  document.getElementById('total').textContent=list.length;
-  document.getElementById('cnt-out').textContent=all.filter(d=>d.category==='Outillage').length;
-  document.getElementById('cnt-jar').textContent=all.filter(d=>d.category==='Jardinage').length;
-  const pcts=list.map(d=>d.pct).filter(Boolean);
-  document.getElementById('best').textContent=(pcts.length?Math.max(...pcts):0)+'%';
-  document.getElementById('shops').textContent=new Set(list.map(d=>d.merch)).size;
+    </a>`;
+  }).join('');
+  updateStats(list);
 }
+
+function updateStats(list) {
+  document.getElementById('s-total').textContent = list.length;
+  document.getElementById('s-out').textContent = ALL.filter(d=>(d.category||'Outillage')==='Outillage').length;
+  document.getElementById('s-jar').textContent = ALL.filter(d=>d.category==='Jardinage').length;
+  const pcts = list.map(d=>d.pct).filter(Boolean);
+  document.getElementById('s-best').textContent = (pcts.length ? Math.max(...pcts) : 0)+'%';
+  document.getElementById('s-shops').textContent = new Set(list.map(d=>d.merch)).size;
+}
+
 filter();
-</script></body></html>
+</script>
+</body></html>
