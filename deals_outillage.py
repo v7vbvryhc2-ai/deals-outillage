@@ -309,8 +309,8 @@ def parse_rotopino(max_pages=8):
                 if not is_relevant(name, "Outillage"):
                     continue
 
-                img_m = re.search(r'src="(https://[^"]+\.(?:jpg|jpeg|png|webp)[^"]*)"', before[-500:])
-                img = img_m.group(1) if img_m else ""
+                img_m = re.search(r'data-default="(/photo/product/[^"]+)"', before[-2000:])
+                img = "https://www.rotopino.fr" + img_m.group(1) if img_m else ""
 
                 deal_id = f"rotopino_{re.sub(r'[^a-z0-9]', '', name[:20].lower())}_{int(curr * 100)}"
                 deals.append({
