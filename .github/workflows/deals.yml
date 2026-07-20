@@ -8,10 +8,17 @@ on:
 jobs:
   scan:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     permissions:
       contents: write
     steps:
       - uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          pip install playwright
+          playwright install chromium
+          playwright install-deps chromium
 
       - name: Run deals scanner
         env:
@@ -23,6 +30,6 @@ jobs:
         run: |
           git config user.email "action@github.com"
           git config user.name "GitHub Action"
-          git add seen_deals.json deals_history.json index.html README.md || true
-          git diff --staged --quiet || git commit -m "Update dashboard $(date +'%d/%m %H:%M')"
+          git add seen_deals.json deals_history.json index.html || true
+          git diff --staged --quiet || git commit -m "Update $(date +'%d/%m %H:%M')"
           git push || true
