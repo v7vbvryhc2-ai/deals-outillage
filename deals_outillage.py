@@ -112,11 +112,18 @@ def extract_from_page(page, store_name, category):
                     high  = parse_price(offers.get('highPrice'))
                     pct   = calc_discount(high, price) if high and price else 0
                     if pct >= 30:
+                        # Extract image from JSON-LD
+                        img = ""
+                        raw_img = item.get("image", "")
+                        if isinstance(raw_img, list): raw_img = raw_img[0] if raw_img else ""
+                        if isinstance(raw_img, dict): raw_img = raw_img.get("url", "")
+                        if isinstance(raw_img, str) and raw_img.startswith("http"):
+                            img = raw_img
                         deals.append({
                             "id": re.sub(r'[^\w]','', name[:20]+str(price)),
                             "title": name[:100], "price": f"{price}€",
                             "pct": pct, "merch": store_name, "category": category,
-                            "link": offers.get('url', url), "image": ""
+                            "link": offers.get('url', url), "image": img
                         })
         except: pass
 
@@ -134,6 +141,7 @@ def extract_from_page(page, store_name, category):
                 if is_relevant(name, category) and len(deals) < 80:
                     pm = re.search(r'([\d]+[,\.][\d]{2})\s*€', ctx)
                     lm = re.search(r'href="(/[^"]{5,120})"', ctx)
+                    im = re.search(r'<img[^>]+src="(https://[^"]{20,200})"', ctx)
                     base = page.url.split('/')[0]+'//'+page.url.split('/')[2]
                     deals.append({
                         "id": re.sub(r'[^\w]','', name[:20]+pct_str+category[:3]),
@@ -141,7 +149,7 @@ def extract_from_page(page, store_name, category):
                         "price": f"{pm.group(1)}€" if pm else "?",
                         "pct": pct, "merch": store_name, "category": category,
                         "link": base+lm.group(1) if lm else url,
-                        "image": ""
+                        "image": im.group(1) if im else ""
                     })
                     break
     except: pass
@@ -170,6 +178,15 @@ def scrape_all():
                 page.evaluate("window.scrollTo(0, document.body.scrollHeight / 2)")
                 page.wait_for_timeout(2000)
                 deals = extract_from_page(page, store_name, category)
+                # Fallback: use og:image if no product images found
+                if deals and not any(d.get("image") for d in deals):
+                    try:
+                        og = page.query_selector('meta[property="og:image"]')
+                        og_img = og.get_attribute("content") if og else ""
+                        if og_img:
+                            for d in deals:
+                                if not d.get("image"): d["image"] = og_img
+                    except: pass
                 print(f"  → {len(deals)} deals ≥30%")
                 all_deals.extend(deals)
             except PwTimeout:
