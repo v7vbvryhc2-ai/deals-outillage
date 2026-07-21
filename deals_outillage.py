@@ -318,7 +318,8 @@ def parse_rotopino_pages(base_url, merch_label="Rotopino", min_pct=20, max_pages
                 if not is_relevant(name, "Outillage"):
                     continue
 
-                img_m = re.search(r'data-default="(/photo/product/[^"]+)"', before[-2000:])
+                img_m = (re.search(r'(?:data-default|src)="(/photo/product/[^"]+)"', before[-2000:]) or
+                         re.search(r'(?:data-default|src)="(/photo/product/[^"]+)"', before[-6000:]))
                 img = "https://www.rotopino.fr" + img_m.group(1) if img_m else ""
 
                 slug = re.sub(r'[^a-z0-9]', '', name[:20].lower())
