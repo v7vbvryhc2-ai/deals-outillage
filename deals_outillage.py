@@ -271,8 +271,12 @@ def parse_rotopino_pages(base_url, merch_label="Rotopino", min_pct=20, max_pages
             sep = "&" if "?" in base_url else "?"
             url = f"{base_url}{sep}page={page}" if page > 1 else base_url
             try:
-                html = fetch_url(url, timeout=20)
-            except Exception:
+                html = fetch_url(url, timeout=25)
+                if not html or len(html) < 5000:
+                    print(f"  → {merch_label} p{page}: page vide ou erreur ({len(html) if html else 0} bytes)")
+                    break
+            except Exception as fetch_err:
+                print(f"  → {merch_label} p{page}: erreur fetch - {fetch_err}")
                 break
 
             page_deals = 0
