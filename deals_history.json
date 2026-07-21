@@ -351,5 +351,29 @@
     "link": "https://www.rotopino.fr/marteau-perforateur-sds-plus-dewalt-dch172p2,122757",
     "image": "",
     "date": "20/07/2026 21:43"
+  },
+  {
+    "id": "rotopino/hikoki_batterie36v40ah_11500",
+    "title": "Batterie 36 V 4,0 Ah / 18 V 8,0 Ah MULTIVOLT Hikoki BSL36B18X",
+    "price": "115.00€",
+    "old_price": "129.00€",
+    "pct": 10,
+    "merch": "Rotopino/Hikoki",
+    "category": "Outillage",
+    "link": "https://www.rotopino.fr/batterie-36-v-4-0-ah-18-v-8-0-ah-multivolt-hikoki-bsl36b18x,138368",
+    "image": "",
+    "date": "21/07/2026 08:59"
+  },
+  {
+    "id": "rotopino/hikoki_meuleusedanglehik_11900",
+    "title": "Meuleuse d'angle Hikoki G1813DA W4Z",
+    "price": "119.00€",
+    "old_price": "145.00€",
+    "pct": 17,
+    "merch": "Rotopino/Hikoki",
+    "category": "Outillage",
+    "link": "https://www.rotopino.fr/meuleuse-d-angle-hikoki-g1813da-w4z,136818",
+    "image": "",
+    "date": "21/07/2026 08:59"
   }
 ]
