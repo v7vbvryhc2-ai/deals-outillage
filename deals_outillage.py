@@ -48,7 +48,6 @@ FIXAMI_URLS = [
     ("https://www.fixami.be/fr/offres/bosch-pro-deals.html", "Outillage"),
 ]
 
-ROTOPINO_PAGES = 8  # pages in /offres/prix-baisse/
 
 H = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"}
 
@@ -264,12 +263,13 @@ def parse_fixami(url, category):
 
     return deals
 
-def parse_rotopino(max_pages=8):
-    """Scrape Rotopino prix-baisse pages for deals >= 20%."""
+def parse_rotopino_pages(base_url, merch_label="Rotopino", min_pct=20, max_pages=8):
+    """Scrape Rotopino-structure pages for deals >= min_pct%."""
     deals = []
     try:
         for page in range(1, max_pages + 1):
-            url = f"https://www.rotopino.fr/offres/prix-baisse/?page={page}" if page > 1 else "https://www.rotopino.fr/offres/prix-baisse/"
+            sep = "&" if "?" in base_url else "?"
+            url = f"{base_url}{sep}page={page}" if page > 1 else base_url
             try:
                 html = fetch_url(url, timeout=20)
             except Exception:
@@ -298,7 +298,7 @@ def parse_rotopino(max_pages=8):
                 if old > curr > 0:
                     pct = int((old - curr) / old * 100)
 
-                if pct < 20:
+                if pct < min_pct:
                     continue
 
                 before = html[max(0, pos - 2500):pos]
@@ -321,28 +321,32 @@ def parse_rotopino(max_pages=8):
                 img_m = re.search(r'data-default="(/photo/product/[^"]+)"', before[-2000:])
                 img = "https://www.rotopino.fr" + img_m.group(1) if img_m else ""
 
-                deal_id = f"rotopino_{re.sub(r'[^a-z0-9]', '', name[:20].lower())}_{int(curr * 100)}"
+                slug = re.sub(r'[^a-z0-9]', '', name[:20].lower())
+                deal_id = f"{merch_label.lower().replace(' ','_')}_{slug}_{int(curr * 100)}"
                 deals.append({
                     "id": deal_id,
                     "title": name[:100],
                     "price": f"{curr:.2f}€" if curr else "",
                     "old_price": f"{old:.2f}€" if old else "",
                     "pct": pct,
-                    "merch": "Rotopino",
+                    "merch": merch_label,
                     "category": "Outillage",
                     "link": prod_url,
                     "image": img,
                 })
                 page_deals += 1
 
-            print(f"  → Rotopino p{page}: {page_deals} deals ≥30%")
+            print(f"  → {merch_label} p{page}: {page_deals} deals ≥{min_pct}%")
             if not re.search(rf'page={page + 1}', html):
                 break
 
     except Exception as e:
-        print(f"  → Rotopino erreur: {e}")
+        print(f"  → {merch_label} erreur: {e}")
 
     return deals
+
+def parse_rotopino():
+    return parse_rotopino_pages("https://www.rotopino.fr/offres/prix-baisse/", "Rotopino", min_pct=20, max_pages=8)
 
 def tg(txt):
     data = urllib.parse.urlencode({
@@ -403,7 +407,7 @@ header p{{opacity:.8;margin-top:6px;font-size:.85rem}}
 </style></head><body>
 <header>
   <h1>🔧🌿 Deals Outillage & Jardinage ≥30%</h1>
-  <p>Scan toutes les heures • Dealabs • Fixami • Rotopino • Leroy Merlin • Amazon • Lidl • Screwfix • ManoMano • Racetools • Bosch • Makita • DeWalt • Milwaukee • Ryobi • et plus</p>
+  <p>Scan toutes les heures • Dealabs • Fixami • Rotopino • Hikoki • Leroy Merlin • Amazon • Lidl • Screwfix • ManoMano • Racetools • Bosch • Makita • DeWalt • Milwaukee • Ryobi • et plus</p>
 </header>
 <div class="stats">
   <div class="stat"><div class="num" id="total">0</div><div class="label">Total deals</div></div>
@@ -526,13 +530,27 @@ for fixami_url, category in FIXAMI_URLS:
         print(f"  → Fixami erreur: {e}")
 
 # Rotopino direct scan (seuil ≥20%)
-print("Scan Rotopino...")
+print("Scan Rotopino prix-baisse...")
 try:
-    rotopino_deals = parse_rotopino(ROTOPINO_PAGES)
+    rotopino_deals = parse_rotopino()
     print(f"  → {len(rotopino_deals)} deals Rotopino ≥20%")
     all_deals.extend(rotopino_deals)
 except Exception as e:
     print(f"  → Rotopino erreur: {e}")
+
+# Rotopino Hikoki brand page (seuil ≥10%)
+print("Scan Rotopino Hikoki...")
+try:
+    hikoki_deals = parse_rotopino_pages(
+        "https://www.rotopino.fr/hikoki",
+        merch_label="Rotopino/Hikoki",
+        min_pct=10,
+        max_pages=3
+    )
+    print(f"  → {len(hikoki_deals)} deals Hikoki ≥10%")
+    all_deals.extend(hikoki_deals)
+except Exception as e:
+    print(f"  → Rotopino Hikoki erreur: {e}")
 
 for d in all_deals:
     if d["id"] not in seen:
