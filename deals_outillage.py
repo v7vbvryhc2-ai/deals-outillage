@@ -39,8 +39,8 @@ KW_JARDINAGE = [
 KW_ALL = list(set(KW_OUTILLAGE + KW_JARDINAGE))
 
 FEEDS = [
-    ("https://www.dealabs.com/rss/groupe/outillage", "Outillage"),
-    ("https://www.dealabs.com/rss/groupe/jardin-bricolage", "Jardinage"),
+    ("https://www.dealabs.com/rss/groupe/outillage", "Outillage", 30),
+    ("https://www.dealabs.com/rss/groupe/jardin-bricolage", "Jardinage", 20),
 ]
 
 FIXAMI_URLS = [
@@ -98,7 +98,7 @@ def fetch_url(url, timeout=25):
                 raise
     return ""
 
-def parse_feed(html, category):
+def parse_feed(html, category, min_pct=30):
     deals = []
     items = re.findall(r'<item>(.*?)</item>', html, re.DOTALL)
     for item in items:
@@ -130,13 +130,13 @@ def parse_feed(html, category):
         if pcts:
             pct = max(int(x) for x in pcts)
 
-        if pct < 30 and current_price:
+        if pct < min_pct and current_price:
             all_prices = [parse_price(x) for x in re.findall(r'([\d]+[,\.][\d]{2})\s*€', full_text)]
             all_prices = sorted([x for x in all_prices if x and x > current_price * 1.1], reverse=True)
             if all_prices:
                 pct = calc_discount(all_prices[0], current_price)
 
-        if pct < 30:
+        if pct < min_pct:
             continue
 
         did = re.search(r'/(\d+)$', link)
@@ -411,7 +411,7 @@ header p{{opacity:.8;margin-top:6px;font-size:.85rem}}
 .footer{{text-align:center;padding:8px;color:#475569;font-size:.78rem;margin-bottom:10px}}
 </style></head><body>
 <header>
-  <h1>🔧🌿 Deals Outillage & Jardinage ≥30%</h1>
+  <h1>🔧🌿 Deals Outillage ≥30% & Jardinage ≥20%</h1>
   <p>Scan toutes les heures • Dealabs • Fixami • Rotopino • Hikoki • Leroy Merlin • Amazon • Lidl • Screwfix • ManoMano • Racetools • Bosch • Makita • DeWalt • Milwaukee • Ryobi • et plus</p>
 </header>
 <div class="stats">
@@ -512,14 +512,14 @@ new     = []
 all_deals = []
 
 # Dealabs RSS feeds
-for feed_url, category in FEEDS:
+for feed_url, category, min_pct in FEEDS:
     try:
-        print(f"Scan RSS {category}...")
+        print(f"Scan RSS {category} (≥{min_pct}%)...")
         with urllib.request.urlopen(
             urllib.request.Request(feed_url, headers=H), timeout=20) as r:
             html = r.read().decode("utf-8", errors="replace")
-        deals = parse_feed(html, category)
-        print(f"  → {len(deals)} deals ≥30%")
+        deals = parse_feed(html, category, min_pct)
+        print(f"  → {len(deals)} deals ≥{min_pct}%")
         all_deals.extend(deals)
     except Exception as e:
         print(f"  → Erreur {category}: {e}")
