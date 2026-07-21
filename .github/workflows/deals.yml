@@ -24,7 +24,8 @@ jobs:
         run: |
           git config user.email "action@github.com"
           git config user.name "GitHub Action"
-          git add seen_deals.json deals_history.json index.html last_digest.txt || true
+          git add seen_deals.json deals_history.json index.html last_digest.txt 2>/dev/null || true
+          git status
           git diff --staged --quiet || git commit -m "Update $(date +'%d/%m %H:%M')"
           git push || true
 
