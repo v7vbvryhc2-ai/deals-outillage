@@ -1,5 +1,5 @@
 import json, re, os, urllib.parse, urllib.request, urllib.error
-from datetime import datetime
+from datetime import datetime, timezone
 
 TOKEN   = os.environ["TELEGRAM_TOKEN"]
 CHAT    = os.environ["CHAT_ID"]
@@ -562,24 +562,48 @@ for d in all_deals:
 
 print(f"\nTotal: {len(all_deals)} deals, {len(new)} nouveaux")
 
-if new:
-    new.sort(key=lambda x: x["pct"], reverse=True)
-    out = [d for d in new if d.get("category") == "Outillage"]
-    jar = [d for d in new if d.get("category") == "Jardinage"]
-    msg = f"🔧🌿 Deals ≥30% - {now_str}\n\n"
+def build_tg_msg(deals_list, header):
+    deals_list.sort(key=lambda x: x["pct"], reverse=True)
+    out = [d for d in deals_list if d.get("category") == "Outillage"]
+    jar = [d for d in deals_list if d.get("category") == "Jardinage"]
+    msg = header
     if out:
         msg += "🔧 OUTILLAGE\n"
         for d in out[:5]:
-            msg += f"[-{d['pct']}%] {d['title'][:60]}\n{d['price']} chez {d['merch']}\n{d['link']}\n\n"
+            msg += f"[-{d['pct']}%] {d['title'][:60]}\n{d.get('price','')} chez {d['merch']}\n{d['link']}\n\n"
     if jar:
         msg += "🌿 JARDINAGE\n"
         for d in jar[:5]:
-            msg += f"[-{d['pct']}%] {d['title'][:60]}\n{d['price']} chez {d['merch']}\n{d['link']}\n\n"
-    reste = len(new) - len(out[:5]) - len(jar[:5])
+            msg += f"[-{d['pct']}%] {d['title'][:60]}\n{d.get('price','')} chez {d['merch']}\n{d['link']}\n\n"
+    reste = len(deals_list) - len(out[:5]) - len(jar[:5])
     if reste > 0: msg += f"... et {reste} autres\n\n"
     msg += f"👉 https://v7vbvryhc2-ai.github.io/deals-outillage/"
-    if len(msg) > 4000: msg = msg[:4000]
-    print("Telegram:", tg(msg))
+    return msg[:4000]
+
+# Telegram pour nouveaux deals immédiats
+if new:
+    msg = build_tg_msg(new, f"🆕 Nouveaux deals ≥10% - {now_str}\n\n")
+    print("Telegram nouveaux:", tg(msg))
+
+# Résumé quotidien à 8h UTC (±1h pour couvrir les décalages GitHub)
+now_utc = datetime.now(timezone.utc)
+is_digest_hour = now_utc.hour == 8
+DIGEST_FILE = "last_digest.txt"
+try:
+    with open(DIGEST_FILE) as f:
+        last_digest = f.read().strip()
+except:
+    last_digest = ""
+
+today_str = now_utc.strftime("%Y-%m-%d")
+if is_digest_hour and last_digest != today_str and history:
+    top = sorted(history, key=lambda x: x["pct"], reverse=True)[:10]
+    msg_digest = build_tg_msg(top, f"📊 Top deals du jour - {now_str}\n{len(history)} deals actifs\n\n")
+    print("Telegram digest:", tg(msg_digest))
+    with open(DIGEST_FILE, "w") as f:
+        f.write(today_str)
+elif not is_digest_hour:
+    print(f"Digest: pas l'heure (heure UTC actuelle: {now_utc.hour}h, digest à 8h)")
 
 save_json(SEEN, list(seen)[-1000:])
 save_json(HISTORY, history[-300:])
