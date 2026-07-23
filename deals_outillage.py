@@ -38,6 +38,10 @@ KW_JARDINAGE = [
 
 KW_ALL = list(set(KW_OUTILLAGE + KW_JARDINAGE))
 
+# Marchands "flash deals" : toujours très remisés, inclus sans vérification du %
+# Le % affiché (30) est indicatif — leurs prix sont toujours en dessous du marché
+FLASH_MERCHANTS = {"ibood", "iBOOD"}
+
 FEEDS = [
     ("https://www.dealabs.com/rss/groupe/outillage", "Outillage", 30),
     ("https://www.dealabs.com/rss/groupe/jardin-bricolage", "Jardinage", 20),
@@ -136,8 +140,12 @@ def parse_feed(html, category, min_pct=30):
             if all_prices:
                 pct = calc_discount(all_prices[0], current_price)
 
-        if pct < min_pct:
+        # Flash deals merchants : toujours inclus si keywords OK (pas de % explicite sur iBOOD)
+        is_flash = merch in FLASH_MERCHANTS or merch.lower() in {m.lower() for m in FLASH_MERCHANTS}
+        if pct < min_pct and not is_flash:
             continue
+        if pct < 1 and is_flash:
+            pct = 30  # indicatif pour les flash deals sans % explicite
 
         did = re.search(r'/(\d+)$', link)
         deal_id = did.group(1) if did else re.sub(r'[^\w]', '', title[:20] + price_str[:5])
