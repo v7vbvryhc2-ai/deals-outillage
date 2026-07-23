@@ -18,7 +18,7 @@ KW_OUTILLAGE = [
     "ciseau bois","burin","lime","serre-joint","etau","etabli","coffret outils",
     "caisse outils","boite outils","multimetre","detecteur","disqueuse","meule",
     "fixami","maxoutil","rotopino","discountoffice","idmarket","clickoutils",
-    "cdiscount","screwfix","manomano","racetools"
+    "cdiscount","screwfix","manomano","racetools","ibood"
 ]
 
 KW_JARDINAGE = [
@@ -110,16 +110,19 @@ def parse_feed(html, category, min_pct=30):
         if not t: continue
         title = t.group(1).strip()
 
-        if not is_relevant(title, category): continue
+        m = re.search(r'merchant name="([^"]+)"', item)
+        merch_early = m.group(1) if m else ""
+        is_flash_early = merch_early in FLASH_MERCHANTS or merch_early.lower() in {fm.lower() for fm in FLASH_MERCHANTS}
+        if not is_relevant(title, category) and not is_flash_early:
+            continue
 
         p = re.search(r'price="([^"]+)"', item)
-        m = re.search(r'merchant name="([^"]+)"', item)
         l = re.search(r'<link>([^<]+)</link>', item)
         img = re.search(r'url="(https://[^"]+)"', item)
         d = re.search(r'<description><!\[CDATA\[(.*?)\]\]>', item, re.DOTALL)
 
         price_str = p.group(1) if p else ""
-        merch = m.group(1) if m else ""
+        merch = merch_early
         link = l.group(1).strip() if l else ""
         image = img.group(1) if img else ""
         desc = re.sub(r'<[^>]+>', ' ', d.group(1)) if d else ""
@@ -140,8 +143,8 @@ def parse_feed(html, category, min_pct=30):
             if all_prices:
                 pct = calc_discount(all_prices[0], current_price)
 
-        # Flash deals merchants : toujours inclus si keywords OK (pas de % explicite sur iBOOD)
-        is_flash = merch in FLASH_MERCHANTS or merch.lower() in {m.lower() for m in FLASH_MERCHANTS}
+        # Flash deals merchants : toujours inclus même sans % explicite (ex. iBOOD)
+        is_flash = is_flash_early
         if pct < min_pct and not is_flash:
             continue
         if pct < 1 and is_flash:
@@ -622,3 +625,4 @@ save_json(HISTORY, history[-300:])
 with open("index.html", "w", encoding="utf-8") as f:
     f.write(generate_html(history))
 print(f"Dashboard: {len(history)} deals total")
+
