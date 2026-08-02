@@ -130,12 +130,13 @@ def parse_feed(html, category, min_pct=30):
 
         current_price = parse_price(price_str)
         pct = 0
+        all_prices = []
 
         pcts = re.findall(r'[-–]\s*(\d{2,3})\s*%', full_text)
         pcts += re.findall(r'(\d{2,3})\s*%\s*(?:de remise|reduction|off|moins|rabais)',
                            full_text, re.IGNORECASE)
         if pcts:
-            pct = max(int(x) for x in pcts)
+            pct = min(max(int(x) for x in pcts), 99)
 
         if pct < min_pct and current_price:
             all_prices = [parse_price(x) for x in re.findall(r'([\d]+[,\.][\d]{2})\s*€', full_text)]
@@ -157,7 +158,7 @@ def parse_feed(html, category, min_pct=30):
         old_price_str = ""
         if all_prices:
             old_price_str = f"{all_prices[0]:.2f}€"
-        elif current_price and pct > 0:
+        elif current_price and 0 < pct < 100:
             old_price_str = f"{current_price / (1 - pct / 100):.2f}€"
 
         deals.append({
@@ -625,4 +626,5 @@ save_json(HISTORY, history[-300:])
 with open("index.html", "w", encoding="utf-8") as f:
     f.write(generate_html(history))
 print(f"Dashboard: {len(history)} deals total")
+
 
