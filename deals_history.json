@@ -1251,5 +1251,101 @@
     "link": "https://www.dealabs.com/bons-plans/lot-de-deux-treteaux-scie-treteaux-sawhorse-toughbuilt-c550-3407910",
     "image": "https://static-pepper.dealabs.com/threads/raw/AJvGc/3407910_1/re/150x150/qt/55/3407910_1.jpg",
     "date": "07/09/2026 12:14"
+  },
+  {
+    "id": "rotopino_touretmeuleryato_5500",
+    "title": "Touret à meuler Yato YT-822100",
+    "price": "55.00€",
+    "old_price": "70.00€",
+    "pct": 21,
+    "merch": "Rotopino",
+    "category": "Outillage",
+    "link": "https://www.rotopino.fr/touret-a-meuler-yato-yt-822100,144636",
+    "image": "https://www.rotopino.fr/photo/product/yato-yt-822100-2-144636-f-sk7-w280-h280.png",
+    "date": "07/09/2026 18:12"
+  },
+  {
+    "id": "rotopino_tondeuselectrique_7900",
+    "title": "Tondeuse électrique Yato YT-852081",
+    "price": "79.00€",
+    "old_price": "108.00€",
+    "pct": 26,
+    "merch": "Rotopino",
+    "category": "Outillage",
+    "link": "https://www.rotopino.fr/tondeuse-electrique-yato-yt-852081,144489",
+    "image": "https://www.rotopino.fr/photo/product/yato-yt-852081-2-144489-f-sk7-w280-h280.png",
+    "date": "07/09/2026 18:12"
+  },
+  {
+    "id": "rotopino_meuleusedangleyat_7900",
+    "title": "Meuleuse d'angle Yato YT-821014",
+    "price": "79.00€",
+    "old_price": "100.00€",
+    "pct": 21,
+    "merch": "Rotopino",
+    "category": "Outillage",
+    "link": "https://www.rotopino.fr/meuleuse-d-angle-yato-yt-821014,144632",
+    "image": "https://www.rotopino.fr/photo/product/yato-yt-821014-2-144632-f-sk7-w280-h280.png",
+    "date": "07/09/2026 18:12"
+  },
+  {
+    "id": "rotopino_meuleusedangleyat_8500",
+    "title": "Meuleuse d'angle Yato YT-821017",
+    "price": "85.00€",
+    "old_price": "110.49€",
+    "pct": 23,
+    "merch": "Rotopino",
+    "category": "Outillage",
+    "link": "https://www.rotopino.fr/meuleuse-d-angle-yato-yt-821017,144631",
+    "image": "https://www.rotopino.fr/photo/product/yato-yt-821017-2-144631-f-sk7-w280-h280.png",
+    "date": "07/09/2026 18:12"
+  },
+  {
+    "id": "rotopino_ponceusevibranteya_13900",
+    "title": "Ponceuse vibrante Yato YT-82205",
+    "price": "139.00€",
+    "old_price": "206.00€",
+    "pct": 32,
+    "merch": "Rotopino",
+    "category": "Outillage",
+    "link": "https://www.rotopino.fr/ponceuse-vibrante-yato-yt-82205,144923",
+    "image": "https://www.rotopino.fr/photo/product/yato-yt-82205-2-144923-f-sk7-w280-h280.png",
+    "date": "07/09/2026 18:12"
+  },
+  {
+    "id": "rotopino_scieporothermyato_19900",
+    "title": "Scie Porotherm Yato YT-82284",
+    "price": "199.00€",
+    "old_price": "299.99€",
+    "pct": 33,
+    "merch": "Rotopino",
+    "category": "Outillage",
+    "link": "https://www.rotopino.fr/scie-porotherm-yato-yt-82284,144804",
+    "image": "https://www.rotopino.fr/photo/product/yato-yt-82284-2-144804-f-sk7-w280-h280.png",
+    "date": "07/09/2026 18:12"
+  },
+  {
+    "id": "rotopino_scieongletsyato_19900",
+    "title": "Scie à onglets Yato YT-821732",
+    "price": "199.00€",
+    "old_price": "249.00€",
+    "pct": 20,
+    "merch": "Rotopino",
+    "category": "Outillage",
+    "link": "https://www.rotopino.fr/scie-a-onglets-yato-yt-821732,144925",
+    "image": "https://www.rotopino.fr/photo/product/yato-yt-821732-2-144925-f-sk7-w280-h280.png",
+    "date": "07/09/2026 18:12"
+  },
+  {
+    "id": "rotopino_aspirateurindustrie_49900",
+    "title": "Aspirateur industriel Makita VC3012M",
+    "price": "499.00€",
+    "old_price": "651.99€",
+    "pct": 23,
+    "merch": "Rotopino",
+    "category": "Outillage",
+    "link": "https://www.rotopino.fr/aspirateur-1200w-makita-vc3012m,69349",
+    "image": "https://www.rotopino.fr/photo/product/makita-vc3012m-2-69349-f-sk7-w280-h280.png",
+    "date": "07/09/2026 18:12"
   }
 ]
