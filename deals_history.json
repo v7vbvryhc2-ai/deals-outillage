@@ -1803,5 +1803,65 @@
     "link": "https://www.dealabs.com/bons-plans/taille-haie-sur-perche-electrique-parkside-pehsl-800-a1-800-w-1-700-cmin-accessoires-dont-lunettes-de-protection-3417202",
     "image": "https://static-pepper.dealabs.com/threads/raw/FpjYR/3417202_1/re/150x150/qt/55/3417202_1.jpg",
     "date": "22/09/2026 09:48"
+  },
+  {
+    "id": "rotopino_batterie12v50ahd_6500",
+    "title": "Batterie 12V 5.0Ah DeWalt DCB126",
+    "price": "65.00€",
+    "old_price": "83.99€",
+    "pct": 22,
+    "merch": "Rotopino",
+    "category": "Outillage",
+    "link": "https://www.rotopino.fr/batterie-12v-5-0ah-dewalt-dcb126,122963",
+    "image": "https://www.rotopino.fr/photo/product/dewalt-dcb126-2-122963-f-sk7-w280-h280.png",
+    "date": "22/09/2026 14:37"
+  },
+  {
+    "id": "rotopino_coffretdesystmem_9900",
+    "title": "Coffret de système Makpac avec tiroirs Makita P-84333",
+    "price": "99.00€",
+    "old_price": "170.99€",
+    "pct": 42,
+    "merch": "Rotopino",
+    "category": "Outillage",
+    "link": "https://www.rotopino.fr/coffret-de-systeme-makpac-avec-tiroirs-makita-p-84333,132225",
+    "image": "https://www.rotopino.fr/photo/product/makita-p-84333-2-132225-f-sk7-w280-h280.png",
+    "date": "22/09/2026 14:37"
+  },
+  {
+    "id": "rotopino_clcliquetsansf_18900",
+    "title": "Clé à cliquet sans fil DeWalt DCF513N",
+    "price": "189.00€",
+    "old_price": "267.99€",
+    "pct": 29,
+    "merch": "Rotopino",
+    "category": "Outillage",
+    "link": "https://www.rotopino.fr/cle-a-cliquet-sans-fil-dewalt-dcf513n,137739",
+    "image": "https://www.rotopino.fr/photo/product/dewalt-dcf513n-2-137739-f-sk7-w280-h280.png",
+    "date": "22/09/2026 14:37"
+  },
+  {
+    "id": "rotopino_clchocsdewalt1_23900",
+    "title": "Clé à chocs DeWalt 18V XR DCF892N",
+    "price": "239.00€",
+    "old_price": "330.99€",
+    "pct": 27,
+    "merch": "Rotopino",
+    "category": "Outillage",
+    "link": "https://www.rotopino.fr/cle-a-chocs-sans-fil-dewalt-dcf892n,126592",
+    "image": "https://www.rotopino.fr/photo/product/dewalt-18v-xr-dcf892n-2-126592-f-sk7-w280-h280.png",
+    "date": "22/09/2026 14:37"
+  },
+  {
+    "id": "rotopino_clchocsdewalt1_24200",
+    "title": "Clé à chocs DeWalt 18V XR DCF891NT",
+    "price": "242.00€",
+    "old_price": "313.99€",
+    "pct": 22,
+    "merch": "Rotopino",
+    "category": "Outillage",
+    "link": "https://www.rotopino.fr/cle-a-chocs-sans-fil-dewalt-dcf891nt,126589",
+    "image": "https://www.rotopino.fr/photo/product/dewalt-18v-xr-dcf891nt-2-126589-f-sk7-w280-h280.png",
+    "date": "22/09/2026 14:37"
   }
 ]
