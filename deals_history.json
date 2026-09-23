@@ -1875,5 +1875,41 @@
     "link": "https://www.dealabs.com/bons-plans/tournevis-ks-tools-pour-vis-a-fente-de-mecanique-de-precision-2-mm-3417925",
     "image": "https://static-pepper.dealabs.com/threads/raw/7eYQs/3417925_1/re/150x150/qt/55/3417925_1.jpg",
     "date": "23/09/2026 11:19"
+  },
+  {
+    "id": "rotopino_clousplats31x90m_2900",
+    "title": "Clous plats 3,1x90 mm 4050 pièces Makita F-31317",
+    "price": "29.00€",
+    "old_price": "39.00€",
+    "pct": 25,
+    "merch": "Rotopino",
+    "category": "Outillage",
+    "link": "https://www.rotopino.fr/clous-plats-3-1x90-mm-4050-pieces-makita,44300",
+    "image": "https://www.rotopino.fr/photo/product/makita-f-31317-2-44300-f-sk7-w280-h280.png",
+    "date": "23/09/2026 16:41"
+  },
+  {
+    "id": "rotopino_cisaillemakitajs10_24500",
+    "title": "Cisaille Makita JS1000",
+    "price": "245.00€",
+    "old_price": "312.49€",
+    "pct": 21,
+    "merch": "Rotopino",
+    "category": "Outillage",
+    "link": "https://www.rotopino.fr/cisaille-makita-js1000,18442",
+    "image": "https://www.rotopino.fr/photo/product/makita-js1000-2-18442-f-sk7-w280-h280.png",
+    "date": "23/09/2026 16:41"
+  },
+  {
+    "id": "rotopino/hikoki_marteaurotatifpe_51900",
+    "title": "Marteau rotatif à percussion SDS-Plus Hikoki DH36DPE WEZ 2x2,5Ah HIT-SYSTEM HSC4 + HSC2",
+    "price": "519.00€",
+    "old_price": "605.00€",
+    "pct": 14,
+    "merch": "Rotopino/Hikoki",
+    "category": "Outillage",
+    "link": "https://www.rotopino.fr/marteau-perforateur-sds-plus-hikoki-dh36dpewez,126026",
+    "image": "https://www.rotopino.fr/photo/product/hikoki-dh36dpe-wez-2x2-5ah-hit-system-hsc4-hsc2-2-126026-f-sk7-w280-h280.png",
+    "date": "23/09/2026 16:41"
   }
 ]
