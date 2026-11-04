@@ -1,14 +1,5 @@
 [
   {
-    "id": "750-a1-750-w-3376590",
-    "title": "Ponceuse à bande Parkside BS 750 A1 - 750 W",
-    "price": "23,99€",
-    "pct": 40,
-    "merch": "Lidl",
-    "link": "https://www.dealabs.com/bons-plans/ponceuse-a-bande-parkside-bs-750-a1-750-w-3376590",
-    "date": "20/07/2026 14:40"
-  },
-  {
     "id": "veau-a-bulle-3376397",
     "title": "[Lidl+",
     "price": "12,99€",
@@ -3591,5 +3582,17 @@
     "link": "https://www.dealabs.com/bons-plans/coffret-dembouts-de-vissage-40-pieces-dewalt-toughcase-dt70717-qz-avec-porte-embout-magnetique-et-douilles-3445526",
     "image": "https://static-pepper.dealabs.com/threads/raw/MYzFY/3445526_1/re/150x150/qt/55/3445526_1.jpg",
     "date": "03/11/2026 20:54"
+  },
+  {
+    "id": "ÉtagèreàoutilsHC1995",
+    "title": "Étagère à outils HC Tools",
+    "price": "19,95€",
+    "old_price": "28.50€",
+    "pct": 30,
+    "merch": "iBOOD",
+    "category": "Jardinage",
+    "link": "https://www.dealabs.com/bons-plans/etagere-a-outils-hc-tools-3446442",
+    "image": "https://static-pepper.dealabs.com/threads/raw/z7qs7/3446442_1/re/150x150/qt/55/3446442_1.jpg",
+    "date": "04/11/2026 23:30"
   }
 ]
