@@ -1,17 +1,5 @@
 [
   {
-    "id": "rotopino_coffreoutilsavec_5200",
-    "title": "Coffre à outils avec 2 tiroirs DeWalt TSTAK DWST1-70706",
-    "price": "52.00€",
-    "old_price": "66.49€",
-    "pct": 21,
-    "merch": "Rotopino",
-    "category": "Outillage",
-    "link": "https://www.rotopino.fr/boite-a-outils-dewalt-t-stak-dwst1-70706,44980",
-    "image": "https://www.rotopino.fr/photo/product/dewalt-tstak-dwst1-70706-2-44980-f-sk7-w280-h280.png",
-    "date": "20/07/2026 21:43"
-  },
-  {
     "id": "rotopino_pompesansfilbosc_5800",
     "title": "Pompe sans fil  Bosch EasyPump",
     "price": "58.00€",
@@ -3598,5 +3586,17 @@
     "link": "https://www.rotopino.fr/cisaille-a-tole-makita-js3201j,42481",
     "image": "https://www.rotopino.fr/photo/product/makita-js3201j-2-42481-f-sk7-w280-h280.png",
     "date": "05/11/2026 15:19"
+  },
+  {
+    "id": "Sélectiondeproduit1499",
+    "title": "Sélection de produits bricolage et jardin Parkside en promotion - Ex : Souffleur de feuilles sans fi",
+    "price": "14,99€",
+    "old_price": "119.00€",
+    "pct": 87,
+    "merch": "Lidl",
+    "category": "Jardinage",
+    "link": "https://www.dealabs.com/bons-plans/selection-de-produits-bricolage-et-jardin-parkside-en-promotion-jeudi-12-et-lundi-16-novembre-ex-souffleur-de-feuilles-sans-fil-3447275",
+    "image": "https://static-pepper.dealabs.com/threads/raw/aWxKe/3447275_1/re/150x150/qt/55/3447275_1.jpg",
+    "date": "05/11/2026 21:53"
   }
 ]
