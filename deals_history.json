@@ -1,17 +1,5 @@
 [
   {
-    "id": "rotopino_pompesansfilbosc_5800",
-    "title": "Pompe sans fil  Bosch EasyPump",
-    "price": "58.00€",
-    "old_price": "79.49€",
-    "pct": 27,
-    "merch": "Rotopino",
-    "category": "Outillage",
-    "link": "https://www.rotopino.fr/pompe-sans-fil-bosch-easypump-bosch-easypump,97013",
-    "image": "https://www.rotopino.fr/photo/product/bosch-easypump-2-97013-f-sk7-w280-h280.png",
-    "date": "20/07/2026 21:43"
-  },
-  {
     "id": "rotopino_multiponceuseavec_7100",
     "title": "Multi-ponceuse avec 15 accessoires Dremel LITE 7760-15",
     "price": "71.00€",
@@ -3598,5 +3586,17 @@
     "link": "https://www.dealabs.com/bons-plans/selection-de-produits-bricolage-et-jardin-parkside-en-promotion-jeudi-12-et-lundi-16-novembre-ex-souffleur-de-feuilles-sans-fil-3447275",
     "image": "https://static-pepper.dealabs.com/threads/raw/aWxKe/3447275_1/re/150x150/qt/55/3447275_1.jpg",
     "date": "05/11/2026 21:53"
+  },
+  {
+    "id": "DécapeurThermiqueP1199",
+    "title": "Décapeur Thermique Parkside PHLGB 2000 A1 - 2000W, 2 Niveaux, Débit 300/500 L/min, avec 3 Buses Inox",
+    "price": "11,99€",
+    "old_price": "14.99€",
+    "pct": 20,
+    "merch": "Lidl",
+    "category": "Jardinage",
+    "link": "https://www.dealabs.com/bons-plans/decapeur-thermique-parkside-phlgb-2000-a1-2000w-2-niveaux-debit-300500-lmin-3-buses-inox-3447466",
+    "image": "https://static-pepper.dealabs.com/threads/raw/iDBL0/3447466_1/re/150x150/qt/55/3447466_1.jpg",
+    "date": "06/11/2026 10:40"
   }
 ]
