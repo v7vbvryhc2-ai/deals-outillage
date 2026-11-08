@@ -1,41 +1,5 @@
 [
   {
-    "id": "rotopino_kitdedmarrage18v_7800",
-    "title": "Kit de démarrage 18V 4.0Ah Stanley FatMax SFMCB14M1",
-    "price": "78.00€",
-    "old_price": "98.99€",
-    "pct": 21,
-    "merch": "Rotopino",
-    "category": "Outillage",
-    "link": "https://www.rotopino.fr/kit-de-demarrage-18v-4-0ah-stanley-fatmax-sfmcb14m1,103381",
-    "image": "https://www.rotopino.fr/photo/product/stanley-fatmax-sfmcb14m1-2-103381-f-sk7-w280-h280.png",
-    "date": "20/07/2026 21:43"
-  },
-  {
-    "id": "rotopino_ponceusebandeein_7900",
-    "title": "Ponceuse à bande Einhell TE-BS 8540 E",
-    "price": "79.00€",
-    "old_price": "100.49€",
-    "pct": 21,
-    "merch": "Rotopino",
-    "category": "Outillage",
-    "link": "https://www.rotopino.fr/ponceuse-a-bande-einhell-rt-bs-75,6025",
-    "image": "https://www.rotopino.fr/photo/product/einhell-te-bs-8540-e-2-6025-f-sk7-w280-h280.png",
-    "date": "20/07/2026 21:43"
-  },
-  {
-    "id": "rotopino_outilmultifonction_8100",
-    "title": "Outil multifonction Stanley FatMax v20 SFMCE500B",
-    "price": "81.00€",
-    "old_price": "115.99€",
-    "pct": 30,
-    "merch": "Rotopino",
-    "category": "Outillage",
-    "link": "https://www.rotopino.fr/outil-multifonction-stanley-fatmax-v20-sfmce500b,103394",
-    "image": "https://www.rotopino.fr/photo/product/stanley-fatmax-v20-sfmce500b-2-103394-f-sk7-w280-h280.png",
-    "date": "20/07/2026 21:43"
-  },
-  {
     "id": "rotopino_batterielithiumion_8100",
     "title": "Batterie lithium-ion 18V 6.0Ah Stanley FatMax SFMCB206",
     "price": "81.00€",
@@ -3598,5 +3562,41 @@
     "link": "https://www.dealabs.com/bons-plans/ryobi-combo-3-outils-18v-perceuse-visseuse-50nm-meuleuse-115mm-scie-sauteuse-18v-rck183a-242sl-3448979",
     "image": "https://static-pepper.dealabs.com/threads/raw/KANWe/3448979_1/re/150x150/qt/55/3448979_1.jpg",
     "date": "08/11/2026 14:57"
+  },
+  {
+    "id": "SerreJointsàUneM599",
+    "title": "Serre-Joints à Une Main Parkside (Lot de 2 en 300mm ou Lot de 4 en 150/100mm, Fonction Écartement",
+    "price": "5,99€",
+    "old_price": "7.99€",
+    "pct": 25,
+    "merch": "Lidl",
+    "category": "Jardinage",
+    "link": "https://www.dealabs.com/bons-plans/serre-joints-a-une-main-parkside-lot-de-2-en-300mm-ou-lot-de-4-en-150100mm-fonction-ecartement-3449370",
+    "image": "https://static-pepper.dealabs.com/threads/raw/HJaHn/3449370_1/re/150x150/qt/55/3449370_1.jpg",
+    "date": "08/11/2026 23:35"
+  },
+  {
+    "id": "ChevaletdeSciageP3499",
+    "title": "Chevalet de Sciage Pliable en Acier Parkside - Capacité 100kg, Échelle de Coupe 25/33/66cm, Sécurité",
+    "price": "34,99€",
+    "old_price": "48.60€",
+    "pct": 28,
+    "merch": "Lidl",
+    "category": "Jardinage",
+    "link": "https://www.dealabs.com/bons-plans/chevalet-de-sciage-pliable-en-acier-parkside-capacite-100kg-echelle-de-coupe-253366cm-securite-anti-ejection-3449367",
+    "image": "https://static-pepper.dealabs.com/threads/raw/JieZE/3449367_1/re/150x150/qt/55/3449367_1.jpg",
+    "date": "08/11/2026 23:35"
+  },
+  {
+    "id": "ThermomètreInfrarou899",
+    "title": "Thermomètre Infrarouge Parkside PTI 380 C3 - -50 à +380°C, Laser 8 Points, Détection Ponts Thermique",
+    "price": "8,99€",
+    "old_price": "12.84€",
+    "pct": 30,
+    "merch": "Lidl",
+    "category": "Jardinage",
+    "link": "https://www.dealabs.com/bons-plans/thermometre-infrarouge-parkside-pti-380-c3-50-a-380-c-3449365",
+    "image": "https://static-pepper.dealabs.com/threads/raw/VYuWD/3449365_1/re/150x150/qt/55/3449365_1.jpg",
+    "date": "08/11/2026 23:35"
   }
 ]
