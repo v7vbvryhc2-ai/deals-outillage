@@ -1,17 +1,5 @@
 [
   {
-    "id": "rotopino_perceusevisseuse_9500",
-    "title": "Perceuse-visseuse à percussion Bosch UniversalImpact 18V-60 1x2.0Ah",
-    "price": "95.00€",
-    "old_price": "155.49€",
-    "pct": 38,
-    "merch": "Rotopino",
-    "category": "Outillage",
-    "link": "https://www.rotopino.fr/perceuse-visseuse-a-percussion-bosch-universalimpact-18v-60-1x2-0ah,126303",
-    "image": "https://www.rotopino.fr/photo/product/bosch-universalimpact-18v-60-1x2-0ah-2-126303-f-sk7-w280-h280.png",
-    "date": "20/07/2026 21:43"
-  },
-  {
     "id": "rotopino_perceusevisseuse_9600",
     "title": "Perceuse-visseuse à percussion Makita DHP482Z",
     "price": "96.00€",
@@ -3598,5 +3586,17 @@
     "link": "https://www.dealabs.com/bons-plans/pinces-isolees-1000v-parkside-au-choix-coupante-universelle-bec-long-denuder-couteau-3450628",
     "image": "https://static-pepper.dealabs.com/threads/raw/NAjuX/3450628_1/re/150x150/qt/55/3450628_1.jpg",
     "date": "10/11/2026 08:13"
+  },
+  {
+    "id": "OutilMultifonctions899",
+    "title": "Outil Multifonctions filaire Parkside PMFW 250 A1 - Bully-les-Mines (62)",
+    "price": "8,99€",
+    "old_price": "22.47€",
+    "pct": 60,
+    "merch": "Lidl",
+    "category": "Jardinage",
+    "link": "https://www.dealabs.com/bons-plans/outil-multifonctions-parkside-lidl-noeux-les-mines-62-3450874",
+    "image": "https://static-pepper.dealabs.com/threads/raw/8zeOI/3450874_1/re/150x150/qt/55/3450874_1.jpg",
+    "date": "10/11/2026 16:56"
   }
 ]
