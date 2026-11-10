@@ -1,17 +1,5 @@
 [
   {
-    "id": "rotopino_ponceusevibrantema_8300",
-    "title": "Ponceuse vibrante Makita BO3710",
-    "price": "83.00€",
-    "old_price": "123.99€",
-    "pct": 33,
-    "merch": "Rotopino",
-    "category": "Outillage",
-    "link": "https://www.rotopino.fr/ponceuse-vibrante-makita-bo3710,2073",
-    "image": "https://www.rotopino.fr/photo/product/makita-bo3710-2-2073-f-sk7-w280-h280.png",
-    "date": "20/07/2026 21:43"
-  },
-  {
     "id": "rotopino_perceusevisseuse_9500",
     "title": "Perceuse-visseuse à percussion Bosch UniversalImpact 18V-60 1x2.0Ah",
     "price": "95.00€",
@@ -3598,5 +3586,17 @@
     "link": "https://www.dealabs.com/bons-plans/jeu-de-tournevis-douilles-et-embouts-100-pieces-hbm-machines-soft-grip-support-de-rangement-inclus-acier-chrome-vanadium-3450295",
     "image": "https://static-pepper.dealabs.com/threads/raw/QFE22/3450295_1/re/150x150/qt/55/3450295_1.jpg",
     "date": "10/11/2026 00:06"
+  },
+  {
+    "id": "PincesIsolées1000V599",
+    "title": "Pinces Isolées 1000V Parkside au Choix - Coupante, Universelle, Bec Long, Dénuder, Couteau",
+    "price": "5,99€",
+    "old_price": "7.99€",
+    "pct": 25,
+    "merch": "Lidl",
+    "category": "Jardinage",
+    "link": "https://www.dealabs.com/bons-plans/pinces-isolees-1000v-parkside-au-choix-coupante-universelle-bec-long-denuder-couteau-3450628",
+    "image": "https://static-pepper.dealabs.com/threads/raw/NAjuX/3450628_1/re/150x150/qt/55/3450628_1.jpg",
+    "date": "10/11/2026 08:13"
   }
 ]
