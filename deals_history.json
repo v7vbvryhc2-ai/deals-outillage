@@ -1,17 +1,5 @@
 [
   {
-    "id": "rotopino_perceusevisseuse_9600",
-    "title": "Perceuse-visseuse à percussion Makita DHP482Z",
-    "price": "96.00€",
-    "old_price": "161.99€",
-    "pct": 40,
-    "merch": "Rotopino",
-    "category": "Outillage",
-    "link": "https://www.rotopino.fr/perceuse-visseuse-makita-dhp482z,69366",
-    "image": "https://www.rotopino.fr/photo/product/makita-dhp482z-2-69366-f-sk7-w280-h280.png",
-    "date": "20/07/2026 21:43"
-  },
-  {
     "id": "rotopino_perceusepercussio_10100",
     "title": "Perceuse à percussion Makita HP1630K",
     "price": "101.00€",
@@ -3598,5 +3586,17 @@
     "link": "https://www.dealabs.com/bons-plans/outil-multifonctions-parkside-lidl-noeux-les-mines-62-3450874",
     "image": "https://static-pepper.dealabs.com/threads/raw/8zeOI/3450874_1/re/150x150/qt/55/3450874_1.jpg",
     "date": "10/11/2026 16:56"
+  },
+  {
+    "id": "RobotpiscineAiper127",
+    "title": "Robot piscine Aiper EcoSurfer S2, de surface, solaire",
+    "price": "127€",
+    "old_price": "181.96€",
+    "pct": 30,
+    "merch": "AliExpress",
+    "category": "Jardinage",
+    "link": "https://www.dealabs.com/bons-plans/robot-piscine-aiper-ecosurfer-s2-de-surface-solaire-3451698",
+    "image": "https://static-pepper.dealabs.com/threads/raw/AeaqJ/3451698_1/re/150x150/qt/55/3451698_1.jpg",
+    "date": "11/11/2026 02:40"
   }
 ]
