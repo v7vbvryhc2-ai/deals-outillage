@@ -1,41 +1,5 @@
 [
   {
-    "id": "rotopino_meuleusedangledew_12800",
-    "title": "Meuleuse d'angle DeWalt DWE490",
-    "price": "128.00€",
-    "old_price": "160.49€",
-    "pct": 20,
-    "merch": "Rotopino",
-    "category": "Outillage",
-    "link": "https://www.rotopino.fr/meuleuse-d-angle-dewalt-dwe490,57177",
-    "image": "https://www.rotopino.fr/photo/product/dewalt-dwe490-2-57177-f-sk7-w280-h280.png",
-    "date": "20/07/2026 21:43"
-  },
-  {
-    "id": "rotopino_chariotdetransport_13600",
-    "title": "Chariot de transport Makita TR00000001",
-    "price": "136.00€",
-    "old_price": "180.49€",
-    "pct": 24,
-    "merch": "Rotopino",
-    "category": "Outillage",
-    "link": "https://www.rotopino.fr/chariot-de-transport-makita-tr00000001,63897",
-    "image": "https://www.rotopino.fr/photo/product/makita-tr00000001-2-63897-f-sk7-w280-h280.png",
-    "date": "20/07/2026 21:43"
-  },
-  {
-    "id": "rotopino_perceusevisseusede_13600",
-    "title": "Perceuse-visseuse DeWalt DCD777S2T",
-    "price": "136.00€",
-    "old_price": "199.49€",
-    "pct": 31,
-    "merch": "Rotopino",
-    "category": "Outillage",
-    "link": "https://www.rotopino.fr/perceuse-visseuse-dewalt-dcd777s2t,70113",
-    "image": "https://www.rotopino.fr/photo/product/dewalt-dcd777s2t-2-70113-f-sk7-w280-h280.png",
-    "date": "20/07/2026 21:43"
-  },
-  {
     "id": "rotopino_perceusevisseusema_13900",
     "title": "Perceuse-visseuse Makita DDF458Z",
     "price": "139.00€",
@@ -3598,5 +3562,41 @@
     "link": "https://www.dealabs.com/bons-plans/outil-denudeur-universel-parkside-cables-nym-8-13mm-coaxial-rg659-fils-05-6mm2-coupe-longitudinale-3452655",
     "image": "https://static-pepper.dealabs.com/threads/raw/q0bry/3452655_1/re/150x150/qt/55/3452655_1.jpg",
     "date": "12/11/2026 01:26"
+  },
+  {
+    "id": "Sélectiondoutilsd4399",
+    "title": "Sélection d'outils de jardin Parkside en promotion jeudi 19 novembre - Ex : Tronçonneuse sans fil Pa",
+    "price": "43,99€",
+    "old_price": "124.00€",
+    "pct": 64,
+    "merch": "Lidl",
+    "category": "Outillage",
+    "link": "https://www.dealabs.com/bons-plans/selection-doutils-de-jardin-parkside-en-promotion-jeudi-19-novembre-ex-tronconneuse-sans-fil-parkside-paks-20-li-f5-3453176",
+    "image": "https://static-pepper.dealabs.com/threads/raw/6x5vd/3453176_1/re/150x150/qt/55/3453176_1.jpg",
+    "date": "12/11/2026 18:05"
+  },
+  {
+    "id": "Perceuseàpercussio1990",
+    "title": "Perceuse à percussion filaire Mac Allister MCB1234DHR – 600 W, mandrin 13 mm, vitesse variable",
+    "price": "19,90€",
+    "old_price": "31.90€",
+    "pct": 37,
+    "merch": "Castorama",
+    "category": "Outillage",
+    "link": "https://www.dealabs.com/bons-plans/perceuse-a-percussion-filaire-mac-allister-mcb1234dhr-600-w-mandrin-13-mm-vitesse-variable-3453041",
+    "image": "https://static-pepper.dealabs.com/threads/raw/y4jcm/3453041_1/re/150x150/qt/55/3453041_1.jpg",
+    "date": "12/11/2026 18:05"
+  },
+  {
+    "id": "SélectiondoutilsP2999",
+    "title": "Sélection d'outils Parkside en promotion jeudi 19 novembre - Ex : Visseuse à chocs sans fil Parkside",
+    "price": "29,99€",
+    "old_price": "329.00€",
+    "pct": 90,
+    "merch": "Lidl",
+    "category": "Outillage",
+    "link": "https://www.dealabs.com/bons-plans/selection-doutils-parkside-en-promotion-jeudi-19-novembre-ex-visseuse-a-chocs-sans-fil-parkside-performance-20-v-3452986",
+    "image": "https://static-pepper.dealabs.com/threads/raw/u3f6e/3452986_1/re/150x150/qt/55/3452986_1.jpg",
+    "date": "12/11/2026 18:05"
   }
 ]
