@@ -1,29 +1,5 @@
 [
   {
-    "id": "rotopino_perceusepercussio_10100",
-    "title": "Perceuse à percussion Makita HP1630K",
-    "price": "101.00€",
-    "old_price": "137.99€",
-    "pct": 26,
-    "merch": "Rotopino",
-    "category": "Outillage",
-    "link": "https://www.rotopino.fr/perceuse-a-percussion-makita-hp1630k,6442",
-    "image": "https://www.rotopino.fr/photo/product/makita-hp1630k-2-6442-f-sk7-w280-h280.png",
-    "date": "20/07/2026 21:43"
-  },
-  {
-    "id": "rotopino_perceusepercussio_10400",
-    "title": "Perceuse à percussion Makita HP1631K",
-    "price": "104.00€",
-    "old_price": "137.99€",
-    "pct": 24,
-    "merch": "Rotopino",
-    "category": "Outillage",
-    "link": "https://www.rotopino.fr/perceuse-a-percussion-makita-hp1631k,6440",
-    "image": "https://www.rotopino.fr/photo/product/makita-hp1631k-2-6440-f-sk7-w280-h280.png",
-    "date": "20/07/2026 21:43"
-  },
-  {
     "id": "rotopino_meuleusedangledew_12800",
     "title": "Meuleuse d'angle DeWalt DWE490",
     "price": "128.00€",
@@ -3598,5 +3574,29 @@
     "link": "https://www.dealabs.com/bons-plans/robot-piscine-aiper-ecosurfer-s2-de-surface-solaire-3451698",
     "image": "https://static-pepper.dealabs.com/threads/raw/AeaqJ/3451698_1/re/150x150/qt/55/3451698_1.jpg",
     "date": "11/11/2026 02:40"
+  },
+  {
+    "id": "Setde2MiniPinces799",
+    "title": "Set de 2 Mini-Pinces Parkside EDC + Pochette Ceinture - Multiprise 125mm ø30mm & Pince-Clé 150mm Ouv",
+    "price": "7,99€",
+    "old_price": "9.99€",
+    "pct": 20,
+    "merch": "Lidl",
+    "category": "Jardinage",
+    "link": "https://www.dealabs.com/bons-plans/set-de-2-mini-pinces-parkside-edc-pochette-ceinture-multiprise-125mm-o30mm-pince-cle-150mm-ouverture-27mm-3452658",
+    "image": "https://static-pepper.dealabs.com/threads/raw/by0bc/3452658_1/re/150x150/qt/55/3452658_1.jpg",
+    "date": "12/11/2026 01:26"
+  },
+  {
+    "id": "OutilDénudeurUnive349",
+    "title": "Outil Dénudeur Universel Parkside - Câbles NYM 8-13mm, Coaxial RG6/59, Fils 0.5-6mm², Coupe Longitud",
+    "price": "3,49€",
+    "old_price": "4.99€",
+    "pct": 30,
+    "merch": "Lidl",
+    "category": "Jardinage",
+    "link": "https://www.dealabs.com/bons-plans/outil-denudeur-universel-parkside-cables-nym-8-13mm-coaxial-rg659-fils-05-6mm2-coupe-longitudinale-3452655",
+    "image": "https://static-pepper.dealabs.com/threads/raw/q0bry/3452655_1/re/150x150/qt/55/3452655_1.jpg",
+    "date": "12/11/2026 01:26"
   }
 ]
