@@ -1,29 +1,5 @@
 [
   {
-    "id": "rotopino_perceusevisseusema_13900",
-    "title": "Perceuse-visseuse Makita DDF458Z",
-    "price": "139.00€",
-    "old_price": "175.49€",
-    "pct": 20,
-    "merch": "Rotopino",
-    "category": "Outillage",
-    "link": "https://www.rotopino.fr/perceuse-visseuse-makita-ddf458z,69322",
-    "image": "https://www.rotopino.fr/photo/product/makita-ddf458z-2-69322-f-sk7-w280-h280.png",
-    "date": "20/07/2026 21:43"
-  },
-  {
-    "id": "rotopino_visseusemakitadfs4_15300",
-    "title": "Visseuse Makita DFS451Z",
-    "price": "153.00€",
-    "old_price": "201.99€",
-    "pct": 24,
-    "merch": "Rotopino",
-    "category": "Outillage",
-    "link": "https://www.rotopino.fr/visseuse-makita-dfs451z,56792",
-    "image": "https://www.rotopino.fr/photo/product/makita-dfs451z-2-56792-f-sk7-w280-h280.png",
-    "date": "20/07/2026 21:43"
-  },
-  {
     "id": "rotopino_compresseursansfil_16300",
     "title": "Compresseur sans fil Metabo Power 160-5 18 LTX BL OF",
     "price": "163.00€",
@@ -3598,5 +3574,29 @@
     "link": "https://www.dealabs.com/bons-plans/selection-doutils-parkside-en-promotion-jeudi-19-novembre-ex-visseuse-a-chocs-sans-fil-parkside-performance-20-v-3452986",
     "image": "https://static-pepper.dealabs.com/threads/raw/u3f6e/3452986_1/re/150x150/qt/55/3452986_1.jpg",
     "date": "12/11/2026 18:05"
+  },
+  {
+    "id": "CléàChocssansfil2999",
+    "title": "Clé à Chocs sans fil Parkside Performance PPDSSA 20-Li B2 - 20V, brushless, 600 Nm (sans Batterie ni",
+    "price": "29,99€",
+    "old_price": "54.99€",
+    "pct": 45,
+    "merch": "Lidl",
+    "category": "Outillage",
+    "link": "https://www.dealabs.com/bons-plans/cle-a-chocs-sans-fil-parkside-performance-ppdssa-20-li-b2-20v-brushless-600-nm-sans-batterie-ni-chargeur-3453525",
+    "image": "https://static-pepper.dealabs.com/threads/raw/tLPA8/3453525_1/re/150x150/qt/55/3453525_1.jpg",
+    "date": "13/11/2026 00:03"
+  },
+  {
+    "id": "Vestepolairedetra999",
+    "title": "Veste polaire de travail Sherpa homme Parkside Noir ou Rouge (Zip YKK, Empiècements Polyamide, Poche",
+    "price": "9,99€",
+    "old_price": "12.97€",
+    "pct": 23,
+    "merch": "Lidl",
+    "category": "Jardinage",
+    "link": "https://www.dealabs.com/bons-plans/veste-polaire-de-travail-sherpa-homme-parkside-noir-ou-rouge-zip-ykk-empiecements-polyamide-poche-poitrine-tailles-s-au-xxl-3453655",
+    "image": "https://static-pepper.dealabs.com/threads/raw/JQaok/3453655_1/re/150x150/qt/55/3453655_1.jpg",
+    "date": "13/11/2026 00:03"
   }
 ]
