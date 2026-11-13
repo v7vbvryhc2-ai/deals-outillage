@@ -1,41 +1,5 @@
 [
   {
-    "id": "rotopino_ponceuseexcentrique_18300",
-    "title": "Ponceuse excentrique Metabo SXE 450 TurboTec",
-    "price": "183.00€",
-    "old_price": "232.99€",
-    "pct": 21,
-    "merch": "Rotopino",
-    "category": "Outillage",
-    "link": "https://www.rotopino.fr/ponceuse-excentrique-metabo-sxe-450-turbotec,15741",
-    "image": "",
-    "date": "20/07/2026 21:43"
-  },
-  {
-    "id": "rotopino_clchocsdewalt1_18500",
-    "title": "Clé à chocs DeWalt 18V XR DCF899N",
-    "price": "185.00€",
-    "old_price": "290.49€",
-    "pct": 36,
-    "merch": "Rotopino",
-    "category": "Outillage",
-    "link": "https://www.rotopino.fr/boulonneuse-a-chocs-dewalt-dcf899n,61054",
-    "image": "https://www.rotopino.fr/photo/product/dewalt-18v-xr-dcf899n-2-61054-f-sk7-w280-h280.png",
-    "date": "20/07/2026 21:43"
-  },
-  {
-    "id": "rotopino_sciecirculairedewa_21100",
-    "title": "Scie circulaire DeWalt DCS565NT",
-    "price": "211.00€",
-    "old_price": "287.49€",
-    "pct": 26,
-    "merch": "Rotopino",
-    "category": "Outillage",
-    "link": "https://www.rotopino.fr/scie-circulaire-sans-fil-dewalt-dcs565nt,122768",
-    "image": "https://www.rotopino.fr/photo/product/dewalt-dcs565nt-2-122768-f-sk7-w280-h280.png",
-    "date": "20/07/2026 21:43"
-  },
-  {
     "id": "rotopino_clchocsdansla_31900",
     "title": "Clé à chocs dans la mallette metaBOX Metabo CAS SSW 18 LTX 1750 BL",
     "price": "319.00€",
@@ -3598,5 +3562,41 @@
     "link": "https://www.dealabs.com/bons-plans/coffre-a-outils-dewalt-tstak-dwst1-70704-3454002",
     "image": "https://static-pepper.dealabs.com/threads/raw/s1yf1/3454002_1/re/150x150/qt/55/3454002_1.jpg",
     "date": "13/11/2026 16:04"
+  },
+  {
+    "id": "PackPerceuseVisseu2499",
+    "title": "Pack Perceuse-Visseuse à Percussion 12V Milwaukee M12 FPD2 - 1 Batterie 12V 4 Ah, Chargeur rapide M1",
+    "price": "249,90€",
+    "old_price": "367.50€",
+    "pct": 32,
+    "merch": "Clickoutil",
+    "category": "Outillage",
+    "link": "https://www.dealabs.com/bons-plans/pack-perceuse-visseuse-a-percussion-12v-milwaukee-m12-fpd2-1-batterie-12v-4-ah-chargeur-rapide-m12-18-fc-coffret-de-31-embouts-3454823",
+    "image": "https://static-pepper.dealabs.com/threads/raw/I6YUs/3454823_1/re/150x150/qt/55/3454823_1.jpg",
+    "date": "13/11/2026 22:27"
+  },
+  {
+    "id": "Sélectiondeproduit399",
+    "title": "Sélection de produits en promotion - Ex: plaque induction Bosch 3 Foyers - Gonesse Paris Nord 2 (95)",
+    "price": "399€",
+    "old_price": "570.00€",
+    "pct": 30,
+    "merch": "Castorama",
+    "category": "Jardinage",
+    "link": "https://www.dealabs.com/bons-plans/offres-destockage-black-friday-castorama-gonesse-ex-plaque-induction-bosch-3454848",
+    "image": "https://static-pepper.dealabs.com/threads/raw/x5DUh/3454848_1/re/150x150/qt/55/3454848_1.jpg",
+    "date": "13/11/2026 22:27"
+  },
+  {
+    "id": "Mainteneurdecharge1599",
+    "title": "Mainteneur de charge batterie Norauto 6V/12V 1 A - Pinces crocodile et cosses à œillets incluses",
+    "price": "15,99€",
+    "old_price": "19.99€",
+    "pct": 20,
+    "merch": "Norauto",
+    "category": "Jardinage",
+    "link": "https://www.dealabs.com/bons-plans/mainteneur-de-charge-batterie-norauto-6v12v-1-a-pinces-crocodile-et-cosses-a-oeillets-incluses-3454833",
+    "image": "https://static-pepper.dealabs.com/threads/raw/6f7F9/3454833_1/re/150x150/qt/55/3454833_1.jpg",
+    "date": "13/11/2026 22:27"
   }
 ]
