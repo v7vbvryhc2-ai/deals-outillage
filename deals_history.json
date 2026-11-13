@@ -1,17 +1,5 @@
 [
   {
-    "id": "rotopino_clchocsdewalt1_16800",
-    "title": "Clé à chocs DeWalt 18V XR DCF922NT",
-    "price": "168.00€",
-    "old_price": "218.99€",
-    "pct": 23,
-    "merch": "Rotopino",
-    "category": "Outillage",
-    "link": "https://www.rotopino.fr/cle-a-chocs-sans-fil-dewalt-dcf922nt,126603",
-    "image": "https://www.rotopino.fr/photo/product/dewalt-18v-xr-dcf922nt-2-126603-f-sk7-w280-h280.png",
-    "date": "20/07/2026 21:43"
-  },
-  {
     "id": "rotopino_ponceuseexcentrique_18300",
     "title": "Ponceuse excentrique Metabo SXE 450 TurboTec",
     "price": "183.00€",
@@ -3598,5 +3586,17 @@
     "link": "https://www.dealabs.com/bons-plans/veste-polaire-de-travail-sherpa-homme-parkside-noir-ou-rouge-zip-ykk-empiecements-polyamide-poche-poitrine-tailles-s-au-xxl-3453655",
     "image": "https://static-pepper.dealabs.com/threads/raw/H7M4l/3453655_1/re/150x150/qt/55/3453655_1.jpg",
     "date": "13/11/2026 07:44"
+  },
+  {
+    "id": "CoffreàoutilsDeWa1995",
+    "title": "Coffre à outils DeWalt Tstak DWST1-70704",
+    "price": "19,95€",
+    "old_price": "28.50€",
+    "pct": 30,
+    "merch": "iBOOD",
+    "category": "Jardinage",
+    "link": "https://www.dealabs.com/bons-plans/coffre-a-outils-dewalt-tstak-dwst1-70704-3454002",
+    "image": "https://static-pepper.dealabs.com/threads/raw/s1yf1/3454002_1/re/150x150/qt/55/3454002_1.jpg",
+    "date": "13/11/2026 16:04"
   }
 ]
