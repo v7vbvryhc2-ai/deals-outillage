@@ -1,17 +1,5 @@
 [
   {
-    "id": "rotopino_clchocsdansla_31900",
-    "title": "Clé à chocs dans la mallette metaBOX Metabo CAS SSW 18 LTX 1750 BL",
-    "price": "319.00€",
-    "old_price": "409.49€",
-    "pct": 22,
-    "merch": "Rotopino",
-    "category": "Outillage",
-    "link": "https://www.rotopino.fr/cle-a-chocs-dans-la-mallette-metabox-metabo-ssw-18-ltx-1750-bl,120870",
-    "image": "",
-    "date": "20/07/2026 21:43"
-  },
-  {
     "id": "rotopino_marteauperforateur_33400",
     "title": "Marteau perforateur SDS-Plus DeWalt DCH172P2",
     "price": "334.00€",
@@ -3598,5 +3586,17 @@
     "link": "https://www.dealabs.com/bons-plans/mainteneur-de-charge-batterie-norauto-6v12v-1-a-pinces-crocodile-et-cosses-a-oeillets-incluses-3454833",
     "image": "https://static-pepper.dealabs.com/threads/raw/6f7F9/3454833_1/re/150x150/qt/55/3454833_1.jpg",
     "date": "13/11/2026 22:27"
+  },
+  {
+    "id": "RobotTondeuseSans999",
+    "title": "Robot Tondeuse Sans Fil LiDAR 3D MOVA LiDAX Ultra 2000 - camera ia, 2000 m², Pente 45%, Coupe Bordur",
+    "price": "999€",
+    "old_price": "1693.22€",
+    "pct": 41,
+    "merch": "Leroy Merlin",
+    "category": "Jardinage",
+    "link": "https://www.dealabs.com/bons-plans/robot-tondeuse-sans-fil-lidar-3d-mova-lidax-ultra-2000-lidar-camera-ia-2000-m2-pente-45-coupe-bordures-5cm-module-4g-3-ans-inclus-3456383",
+    "image": "https://static-pepper.dealabs.com/threads/raw/5WfkQ/3456383_1/re/150x150/qt/55/3456383_1.jpg",
+    "date": "15/11/2026 21:38"
   }
 ]
