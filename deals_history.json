@@ -1,17 +1,5 @@
 [
   {
-    "id": "rotopino/hikoki_meuleusedanglehik_11900",
-    "title": "Meuleuse d'angle Hikoki G1813DA W4Z",
-    "price": "119.00€",
-    "old_price": "145.00€",
-    "pct": 17,
-    "merch": "Rotopino/Hikoki",
-    "category": "Outillage",
-    "link": "https://www.rotopino.fr/meuleuse-d-angle-hikoki-g1813da-w4z,136818",
-    "image": "https://www.rotopino.fr/photo/product/hikoki-g1813da-w4z-2-136818-f-sk7-w280-h280.png",
-    "date": "21/07/2026 09:10"
-  },
-  {
     "id": "Epurateurpiscineà3299",
     "title": "Epurateur piscine à cartouche Intex C530 1,7m³/h",
     "price": "32,99€",
@@ -3598,5 +3586,17 @@
     "link": "https://www.dealabs.com/bons-plans/black-week-nettoyeur-haute-pression-parkside-phd-110-h3-110-bar-1400-w-debit-360-lh-accessoires-inclus-lidl-3457001",
     "image": "https://static-pepper.dealabs.com/threads/raw/87gMg/3457001_1/re/150x150/qt/55/3457001_1.jpg",
     "date": "16/11/2026 09:23"
+  },
+  {
+    "id": "Tondeuserobotsans4893",
+    "title": "Tondeuse robot sans fil périphérique Smart & Free Parkside PPAMR 1250 A1, 1250 m², 20 V",
+    "price": "489,30€",
+    "old_price": "699.00€",
+    "pct": 30,
+    "merch": "Lidl",
+    "category": "Jardinage",
+    "link": "https://www.dealabs.com/bons-plans/tondeuse-robot-sans-fil-peripherique-smart-free-ppamr-1250-a1-1250-m2-20-v-3457889",
+    "image": "https://static-pepper.dealabs.com/threads/raw/S0Vtp/3457889_1/re/150x150/qt/55/3457889_1.jpg",
+    "date": "16/11/2026 20:13"
   }
 ]
