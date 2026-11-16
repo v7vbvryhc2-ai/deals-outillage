@@ -1,29 +1,5 @@
 [
   {
-    "id": "rotopino_marteauperforateur_33400",
-    "title": "Marteau perforateur SDS-Plus DeWalt DCH172P2",
-    "price": "334.00€",
-    "old_price": "425.49€",
-    "pct": 21,
-    "merch": "Rotopino",
-    "category": "Outillage",
-    "link": "https://www.rotopino.fr/marteau-perforateur-sds-plus-dewalt-dch172p2,122757",
-    "image": "",
-    "date": "20/07/2026 21:43"
-  },
-  {
-    "id": "rotopino/hikoki_batterie36v40ah_11500",
-    "title": "Batterie 36 V 4,0 Ah / 18 V 8,0 Ah MULTIVOLT Hikoki BSL36B18X",
-    "price": "115.00€",
-    "old_price": "129.00€",
-    "pct": 10,
-    "merch": "Rotopino/Hikoki",
-    "category": "Outillage",
-    "link": "https://www.rotopino.fr/batterie-36-v-4-0-ah-18-v-8-0-ah-multivolt-hikoki-bsl36b18x,138368",
-    "image": "https://www.rotopino.fr/photo/product/hikoki-bsl36b18x-2-138368-f-sk7-w280-h280.png",
-    "date": "21/07/2026 09:10"
-  },
-  {
     "id": "rotopino/hikoki_meuleusedanglehik_11900",
     "title": "Meuleuse d'angle Hikoki G1813DA W4Z",
     "price": "119.00€",
@@ -3598,5 +3574,29 @@
     "link": "https://www.dealabs.com/bons-plans/robot-tondeuse-sans-fil-lidar-3d-mova-lidax-ultra-2000-lidar-camera-ia-2000-m2-pente-45-coupe-bordures-5cm-module-4g-3-ans-inclus-3456383",
     "image": "https://static-pepper.dealabs.com/threads/raw/5WfkQ/3456383_1/re/150x150/qt/55/3456383_1.jpg",
     "date": "15/11/2026 21:38"
+  },
+  {
+    "id": "SécateurCoupebranc2199",
+    "title": "Sécateur Coupe-branches sans fil Parkside PAAS 20-Li B1 20V - vendu sans chargeur, ni batterie",
+    "price": "21,99€",
+    "old_price": "34.99€",
+    "pct": 37,
+    "merch": "Lidl",
+    "category": "Jardinage",
+    "link": "https://www.dealabs.com/bons-plans/secateur-coupe-branches-sans-fil-parkside-paas-20-li-b1-20v-vendu-sans-chargeur-ni-batterie-3457078",
+    "image": "https://static-pepper.dealabs.com/threads/raw/LDC7n/3457078_1/re/150x150/qt/55/3457078_1.jpg",
+    "date": "16/11/2026 09:23"
+  },
+  {
+    "id": "NettoyeurHautePres3919",
+    "title": "Nettoyeur Haute Pression Parkside PHD 110 H3 - 110 bar, 1400W, débit 360 l/h, accessoires inclus",
+    "price": "39,19€",
+    "old_price": "61.99€",
+    "pct": 36,
+    "merch": "Lidl",
+    "category": "Jardinage",
+    "link": "https://www.dealabs.com/bons-plans/black-week-nettoyeur-haute-pression-parkside-phd-110-h3-110-bar-1400-w-debit-360-lh-accessoires-inclus-lidl-3457001",
+    "image": "https://static-pepper.dealabs.com/threads/raw/87gMg/3457001_1/re/150x150/qt/55/3457001_1.jpg",
+    "date": "16/11/2026 09:23"
   }
 ]
