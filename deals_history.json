@@ -1,41 +1,5 @@
 [
   {
-    "id": "Epurateurpiscineà3299",
-    "title": "Epurateur piscine à cartouche Intex C530 1,7m³/h",
-    "price": "32,99€",
-    "old_price": "44.95€",
-    "pct": 26,
-    "merch": "TradeInn",
-    "category": "Jardinage",
-    "link": "https://www.dealabs.com/bons-plans/epurateur-a-cartouche-c530-17m3h-3379184",
-    "image": "https://static-pepper.dealabs.com/threads/raw/lFfPI/3379184_1/re/150x150/qt/55/3379184_1.jpg",
-    "date": "21/07/2026 15:28"
-  },
-  {
-    "id": "20deréductionsur",
-    "title": "20% de réduction sur une large gamme d'outils Ryobi",
-    "price": "",
-    "old_price": "",
-    "pct": 20,
-    "merch": "Ryobi",
-    "category": "Jardinage",
-    "link": "https://www.dealabs.com/codes-promo/20-de-reduction-sur-une-large-gamme-doutils-ryobi-3379123",
-    "image": "https://static-pepper.dealabs.com/merchants/raw/avatar/3947_1/re/352x352/qt/60/3947_1.jpg",
-    "date": "21/07/2026 15:28"
-  },
-  {
-    "id": "PerceuseVisseuseà2995",
-    "title": "Perceuse-Visseuse à Percussion Makita HP333DZW - 12 V (Machine Seule)",
-    "price": "29,95€",
-    "old_price": "42.79€",
-    "pct": 30,
-    "merch": "iBOOD",
-    "category": "Outillage",
-    "link": "https://www.dealabs.com/bons-plans/perceuse-visseuse-a-percussion-makita-hp333dzw-12-v-machine-seule-3379136",
-    "image": "https://static-pepper.dealabs.com/threads/raw/TK3Us/3379136_1/re/150x150/qt/55/3379136_1.jpg",
-    "date": "23/07/2026 04:37"
-  },
-  {
     "id": "30deréductionsur",
     "title": "30% de réduction sur le mobilier de jardin, les barbecues et les planchas - Jardiland Villabe (91)",
     "price": "",
@@ -3598,5 +3562,41 @@
     "link": "https://www.dealabs.com/bons-plans/tondeuse-robot-sans-fil-peripherique-smart-free-ppamr-1250-a1-1250-m2-20-v-3457889",
     "image": "https://static-pepper.dealabs.com/threads/raw/S0Vtp/3457889_1/re/150x150/qt/55/3457889_1.jpg",
     "date": "16/11/2026 20:13"
+  },
+  {
+    "id": "DécoupeurPlasmaPar1388",
+    "title": "Découpeur Plasma Parkside Performance PPSK 40 B2 avec compresseur",
+    "price": "138,85€",
+    "old_price": "220.40€",
+    "pct": 37,
+    "merch": "Lidl",
+    "category": "Jardinage",
+    "link": "https://www.dealabs.com/bons-plans/decoupeur-plasma-parkside-performance-ppsk-40-b2-avec-compresseur-3458351",
+    "image": "https://static-pepper.dealabs.com/threads/raw/39DXi/3458351_1/re/150x150/qt/55/3458351_1.jpg",
+    "date": "17/11/2026 03:38"
+  },
+  {
+    "id": "TondeuseàGazonÉle8940",
+    "title": "Tondeuse à Gazon Électrique Filaire Parkside Perm 1800 A1 - 1800W, Coupe 44cm, Bac 55L, 7 Hauteurs 2",
+    "price": "89,40€",
+    "old_price": "149.00€",
+    "pct": 40,
+    "merch": "Lidl",
+    "category": "Jardinage",
+    "link": "https://www.dealabs.com/bons-plans/tondeuse-a-gazon-electrique-filaire-parkside-perm-1800-a1-1800w-coupe-44cm-bac-55l-7-hauteurs-20-70mm-jusqua-500m2-3458348",
+    "image": "https://static-pepper.dealabs.com/threads/raw/GMcQx/3458348_1/re/150x150/qt/55/3458348_1.jpg",
+    "date": "17/11/2026 03:38"
+  },
+  {
+    "id": "DétecteurdeMatéria1439",
+    "title": "Détecteur de Matériaux Muraux Parkside POG 70 A1 - Écran 2.4\", Métal 70mm, Câbles 50mm, Bois 25mm, P",
+    "price": "14,39€",
+    "old_price": "23.98€",
+    "pct": 40,
+    "merch": "Lidl",
+    "category": "Jardinage",
+    "link": "https://www.dealabs.com/bons-plans/detecteur-de-materiaux-muraux-parkside-pog-70-a1-ecran-24-metal-70mm-cables-50mm-bois-25mm-piles-incluses-3458349",
+    "image": "https://static-pepper.dealabs.com/threads/raw/7QenR/3458349_1/re/150x150/qt/55/3458349_1.jpg",
+    "date": "17/11/2026 03:38"
   }
 ]
