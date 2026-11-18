@@ -1,29 +1,5 @@
 [
   {
-    "id": "Pincemultiprisede1908",
-    "title": "Pince multiprise de pointe Knipex Cobra (87 01 180) - 180 mm, ouverture Ø42 mm, gaines PVC anti-déra",
-    "price": "19,08€",
-    "old_price": "28.06€",
-    "pct": 32,
-    "merch": "Amazon",
-    "category": "Jardinage",
-    "link": "https://www.dealabs.com/bons-plans/pince-multiprise-de-pointe-knipex-cobra-87-01-180-180-mm-ouverture-o42-mm-gaines-pvc-anti-derapantes-3384874",
-    "image": "https://static-pepper.dealabs.com/threads/raw/N5a2q/3384874_1/re/150x150/qt/55/3384874_1.jpg",
-    "date": "31/07/2026 08:10"
-  },
-  {
-    "id": "TournevisÉlectrique7990",
-    "title": "Tournevis Électrique Magnétique Précis Hoto Snapbloq S-A01 - 3 couples (Vendeur tiers)",
-    "price": "79,90€",
-    "old_price": "170.00€",
-    "pct": 53,
-    "merch": "Amazon",
-    "category": "Jardinage",
-    "link": "https://www.dealabs.com/bons-plans/hoto-snapbloq-s-a01-tournevis-electrique-magnetique-precis-3-couples-3385567",
-    "image": "https://static-pepper.dealabs.com/threads/raw/a33dS/3385567_1/re/150x150/qt/55/3385567_1.jpg",
-    "date": "01/08/2026 12:17"
-  },
-  {
     "id": "Mitigeuravecbecba2995",
     "title": "Mitigeur avec bec bas Grohe 30465000",
     "price": "29,95€",
@@ -3598,5 +3574,29 @@
     "link": "https://www.rotopino.fr/ponceuse-excentrique-hikoki-sv1813da-w2z,132157",
     "image": "https://www.rotopino.fr/photo/product/hikoki-sv1813da-w2z-2-132157-f-sk7-w280-h280.png",
     "date": "17/11/2026 22:09"
+  },
+  {
+    "id": "10deréductiondès",
+    "title": "10% de réduction dès 3 plantes achetées (20% dès 5 plantes achetées & 30% dès 7 plantes achetées) va",
+    "price": "",
+    "old_price": "",
+    "pct": 30,
+    "merch": "Botanic",
+    "category": "Jardinage",
+    "link": "https://www.dealabs.com/bons-plans/jusqua-30-sur-les-plantes-3460002",
+    "image": "https://static-pepper.dealabs.com/threads/raw/HoR5i/3460002_1/re/150x150/qt/55/3460002_1.jpg",
+    "date": "18/11/2026 13:45"
+  },
+  {
+    "id": "Souffleuruniversel1199",
+    "title": "Souffleur universel sans fil Parkside PAUGB B2 - 234 km/h, 20 V, vendu sans batterie",
+    "price": "11,99€",
+    "old_price": "19.99€",
+    "pct": 40,
+    "merch": "Lidl",
+    "category": "Jardinage",
+    "link": "https://www.dealabs.com/bons-plans/souffleur-universel-sans-fil-parkside-paugb-b2-234-kmh-20-v-sans-batterie-3459994",
+    "image": "https://static-pepper.dealabs.com/threads/raw/VsC2U/3459994_1/re/150x150/qt/55/3459994_1.jpg",
+    "date": "18/11/2026 13:45"
   }
 ]
