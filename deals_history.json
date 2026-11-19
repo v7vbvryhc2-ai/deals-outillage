@@ -1,17 +1,5 @@
 [
   {
-    "id": "DétecteurMultiMaté899",
-    "title": "Détecteur Multi-Matériaux ou humidimètre Parkside PMFD A3",
-    "price": "8,99€",
-    "old_price": "16.05€",
-    "pct": 44,
-    "merch": "Lidl",
-    "category": "Jardinage",
-    "link": "https://www.dealabs.com/bons-plans/parkside-detecteur-multi-materiaux-ou-humidimetre-pmfd-a3-3386247",
-    "image": "https://static-pepper.dealabs.com/threads/raw/bOzlx/3386247_1/re/150x150/qt/55/3386247_1.jpg",
-    "date": "02/08/2026 20:15"
-  },
-  {
     "id": "Systèmeboiteàcomp3995",
     "title": "Système boite à compartiment Raaco",
     "price": "39,95€",
@@ -3598,5 +3586,17 @@
     "link": "https://www.dealabs.com/bons-plans/jean-de-travail-thermique-double-homme-parkside-interieur-gratte-poches-cargo-stretch-lycra-2-coloris-tailles-40-58-3460925",
     "image": "https://static-pepper.dealabs.com/threads/raw/OSb2m/3460925_1/re/150x150/qt/55/3460925_1.jpg",
     "date": "19/11/2026 03:06"
+  },
+  {
+    "id": "TronçonneuseThermiq159",
+    "title": "Tronçonneuse Thermique Stihl MS 162 C-BE - Guide 35cm, ErgoStart, Tendeur Rapide",
+    "price": "159€",
+    "old_price": "237.31€",
+    "pct": 33,
+    "merch": "Jardins Loisirs",
+    "category": "Outillage",
+    "link": "https://www.dealabs.com/bons-plans/tronconneuse-thermique-stihl-ms-162-c-be-35-cm-3461708",
+    "image": "https://static-pepper.dealabs.com/threads/raw/qJLRC/3461708_1/re/150x150/qt/55/3461708_1.jpg",
+    "date": "19/11/2026 12:45"
   }
 ]
