@@ -1,17 +1,5 @@
 [
   {
-    "id": "NiveauLaserBoschU9990",
-    "title": "Niveau Laser Bosch Universal Level 360 - Portée 24m, avec Tige TP 320 & Pince, Massy (91)",
-    "price": "99,90€",
-    "old_price": "178.39€",
-    "pct": 44,
-    "merch": "Leroy Merlin",
-    "category": "Outillage",
-    "link": "https://www.dealabs.com/bons-plans/bosch-niveau-laser-360-vert-tige-tp-320-pince-3392421",
-    "image": "https://static-pepper.dealabs.com/threads/raw/pShtk/3392421_1/re/150x150/qt/55/3392421_1.jpg",
-    "date": "13/08/2026 16:12"
-  },
-  {
     "id": "CoffretEmpilableMa2253",
     "title": "Coffret Empilable Makita Makpac - Taille 3 (Vendeur Tiers)",
     "price": "22,53€",
@@ -3598,5 +3586,17 @@
     "link": "https://www.dealabs.com/bons-plans/perceuse-a-percussion-sans-fil-erbauer-ecd12-li-2-12-v-outil-nu-sans-batterie-3464082",
     "image": "https://static-pepper.dealabs.com/threads/raw/QsuDH/3464082_1/re/150x150/qt/55/3464082_1.jpg",
     "date": "21/11/2026 09:31"
+  },
+  {
+    "id": "rotopino/hikoki_marteauperforateur_53700",
+    "title": "Marteau perforateur Hikoki DH1826DA WUZ",
+    "price": "537.00€",
+    "old_price": "624.00€",
+    "pct": 13,
+    "merch": "Rotopino/Hikoki",
+    "category": "Outillage",
+    "link": "https://www.rotopino.fr/marteau-perforateur-hikoki-dh1826da-wuz,138251",
+    "image": "https://www.rotopino.fr/photo/product/hikoki-dh1826da-wuz-2-138251-f-sk7-w280-h280.png",
+    "date": "21/11/2026 22:59"
   }
 ]
