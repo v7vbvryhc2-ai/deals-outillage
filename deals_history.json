@@ -1,17 +1,5 @@
 [
   {
-    "id": "25deremisesurun",
-    "title": "25% de remise sur une sélection de plantes Anthuriums",
-    "price": "",
-    "old_price": "",
-    "pct": 25,
-    "merch": "PLNTS",
-    "category": "Jardinage",
-    "link": "https://www.dealabs.com/bons-plans/25-sur-une-selection-danthuriums-3402666",
-    "image": "https://static-pepper.dealabs.com/threads/raw/263pR/3402666_1/re/150x150/qt/55/3402666_1.jpg",
-    "date": "29/08/2026 08:55"
-  },
-  {
     "id": "70suruneSélectio299",
     "title": "70% sur une Sélection de Plantes - Exemple : Mix Citrus - Auchan Saint-Maur (94)",
     "price": "2,99€",
@@ -3598,5 +3586,17 @@
     "link": "https://www.rotopino.fr/marteau-perforateur-rotatif-dewalt-dch253m2,44867",
     "image": "https://www.rotopino.fr/photo/product/dewalt-dch253m2-2-44867-f-sk7-w280-h280.png",
     "date": "25/11/2026 12:38"
+  },
+  {
+    "id": "Balaidessuieglace706",
+    "title": "Balai d'essuie-glace arrière Bosch Rear H301 - 300 mm",
+    "price": "7,06€",
+    "old_price": "9.54€",
+    "pct": 26,
+    "merch": "Amazon",
+    "category": "Jardinage",
+    "link": "https://www.dealabs.com/bons-plans/balai-dessuie-glace-arriere-bosch-rear-h301-300-mm-3469530",
+    "image": "https://static-pepper.dealabs.com/threads/raw/kxz61/3469530_1/re/150x150/qt/55/3469530_1.jpg",
+    "date": "25/11/2026 22:20"
   }
 ]
