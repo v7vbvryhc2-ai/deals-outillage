@@ -1,17 +1,5 @@
 [
   {
-    "id": "70suruneSélectio299",
-    "title": "70% sur une Sélection de Plantes - Exemple : Mix Citrus - Auchan Saint-Maur (94)",
-    "price": "2,99€",
-    "old_price": "9.97€",
-    "pct": 70,
-    "merch": "Auchan",
-    "category": "Jardinage",
-    "link": "https://www.dealabs.com/bons-plans/plantes-a-70-petits-citronniers-oliviers-auchan-saint-maur-94-3402870",
-    "image": "https://static-pepper.dealabs.com/threads/raw/OdOmY/3402870_1/re/150x150/qt/55/3402870_1.jpg",
-    "date": "29/08/2026 18:18"
-  },
-  {
     "id": "Coupeborduresouta1799",
     "title": "Coupe-bordures ou taille-haies sans fil Parkside PAGS 20-Li A1, 20 V - sans batterie",
     "price": "17,99€",
@@ -3598,5 +3586,17 @@
     "link": "https://www.dealabs.com/bons-plans/balai-dessuie-glace-arriere-bosch-rear-h301-300-mm-3469530",
     "image": "https://static-pepper.dealabs.com/threads/raw/kxz61/3469530_1/re/150x150/qt/55/3469530_1.jpg",
     "date": "25/11/2026 22:20"
+  },
+  {
+    "id": "VestedeTravailHom1399",
+    "title": "Veste de Travail Homme Doublée & Déperlante Parkside Kaki - Ripstop Lycra, Bionic-Finish Eco, Poches",
+    "price": "13,99€",
+    "old_price": "19.99€",
+    "pct": 30,
+    "merch": "Lidl",
+    "category": "Jardinage",
+    "link": "https://www.dealabs.com/bons-plans/veste-de-travail-homme-doublee-deperlante-parkside-kaki-ripstop-lycra-bionic-finish-eco-poches-zippees-l-a-xxl-3469598",
+    "image": "https://static-pepper.dealabs.com/threads/raw/G3h6X/3469598_1/re/150x150/qt/55/3469598_1.jpg",
+    "date": "26/11/2026 04:51"
   }
 ]
